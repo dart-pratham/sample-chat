@@ -32,7 +32,7 @@ var MessageService = (function () {
         return this.http
             .post(this.PostUrl, JSON.stringify({ text: name }), { headers: this.headers })
             .toPromise()
-            .then(function (res) { return res.json().data; })
+            .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
     MessageService = __decorate([

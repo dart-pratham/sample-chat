@@ -26,9 +26,13 @@ export class ChatroomComponent implements OnInit {
     this.getMessage();
   }
 
+  updateMsg():void {
+    this.getMessage();
+  }
+
   send(body: string): void {
     body = body.trim();
-    if(!body) return;
-    this.messageService.add(body).then(body => this.messages.push(body));
+    if(!body) {return;}
+    this.messageService.add(body).then(msg => this.updateMsg());
   }
 }
