@@ -30,6 +30,6 @@ export class ChatroomComponent implements OnInit {
   send(body: string): void {
     body = body.trim();
     if(!body) {return;}
-    this.messageService.add(body).then(msg => this.updateChat()));
+    this.messageService.add(body).then(msg => this.updateChat());
   }
 }

@@ -16,17 +16,9 @@ var ChatroomComponent = (function () {
         this.title = "Chatroom";
     }
     ChatroomComponent.prototype.getMessage = function () {
-<<<<<<< HEAD
         var _this = this;
-        //let x = this;
         this.messageService.getMessage().then(function (messages) { return _this.messages = messages; });
-=======
-        var x = this;
-        this.messageService.getMessage()
-            .then(function (messages) { return x.messages = messages; });
->>>>>>> f0423a2afacae5222719b8a48c628e5f4305e528
     };
-    //console.log(this.messages);
     ChatroomComponent.prototype.ngOnInit = function () {
         this.getMessage();
     };
@@ -40,7 +32,6 @@ var ChatroomComponent = (function () {
             return;
         }
         this.messageService.add(body).then(function (msg) { return _this.updateChat(); });
-        ;
     };
     ChatroomComponent = __decorate([
         core_1.Component({
