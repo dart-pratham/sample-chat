@@ -3,7 +3,6 @@ import { Headers, Http  } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import { Message } from './message';
-//import { IpUrl } from './ipurl';
 @Injectable()
 
 export class MessageService {
@@ -11,9 +10,12 @@ export class MessageService {
   constructor (private http:Http) {}
 
   getMessage(): Promise<Message[]> {
-    return this.http.get(this.ChatUrl).toPromise()
-    .then(response => response.json() as Message[])
-    .catch(this.handleError);
+    return this.http.get(this.ChatUrl)
+    .toPromise()
+    .then(function(res){
+      console.log(res.json());
+      return (res.json() as Message[]);
+    })
   }
 
   private handleError(error: any): Promise<any> {
