@@ -10,7 +10,7 @@ div {
   height: 250px;
   width: 500px;
   background-color: grey;
-  overflow: visible;
+  overflow: scroll;
 }
 
 ul li {

@@ -25,11 +25,11 @@ export class MessageService {
 
   private PostUrl = 'http://192.168.2.115:8000/post/';
 
-  add(name: string): Promise<Message[]> {
+  add(name: string): Promise<Message> {
     return this.http
     .post(this.PostUrl , JSON.stringify({text: name}), {headers: this.headers})
     .toPromise()
-    .then(res => res.json().data)
+    .then(res => res.json())
     .catch(this.handleError);
   }
 }

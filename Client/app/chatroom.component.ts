@@ -21,14 +21,17 @@ export class ChatroomComponent implements OnInit {
     this.messageService.getMessage()
     .then(messages => x.messages = messages);
   }
-   //console.log(this.messages);
- ngOnInit(): void {
+
+  ngOnInit(): void {
     this.getMessage();
   }
 
+  UpdateMsg(): void {
+    this.getMessage();
+  }
   send(body: string): void {
     body = body.trim();
     if(!body) return;
-    this.messageService.add(body).then(body => this.messages.push(body));
-  }
+    this.messageService.add(body).then(msg => this.UpdateMsg());
+    }
 }
