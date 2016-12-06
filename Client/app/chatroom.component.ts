@@ -17,11 +17,9 @@ export class ChatroomComponent implements OnInit {
   constructor(private messageService: MessageService) {}
 
   getMessage(): void {
-    //let x = this;
     this.messageService.getMessage().then(messages => this.messages = messages);
   }
-
-  ngOnInit(): void {
+ ngOnInit(): void {
     this.getMessage();
   }
 

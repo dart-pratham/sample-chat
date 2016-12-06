@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
+//import { IpUrl } from './ipurl';
 var MessageService = (function () {
     function MessageService(http) {
         this.http = http;
@@ -19,12 +20,17 @@ var MessageService = (function () {
         this.PostUrl = 'http://192.168.2.115:8000/post/';
     }
     MessageService.prototype.getMessage = function () {
+<<<<<<< HEAD
         return this.http.get(this.ChatUrl)
             .toPromise()
             .then(function (res) {
             console.log(res.json());
             return res.json();
         })
+=======
+        return this.http.get(this.ChatUrl).toPromise()
+            .then(function (response) { return response.json(); })
+>>>>>>> f0423a2afacae5222719b8a48c628e5f4305e528
             .catch(this.handleError);
     };
     MessageService.prototype.handleError = function (error) {
