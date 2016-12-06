@@ -1,0 +1,19 @@
+h1 {
+  margin-left: 25%;
+}
+
+div {
+  margin-left: 25%;
+}
+
+#chatbox {
+  height: 250px;
+  width: 500px;
+  background-color: grey;
+  overflow: visible;
+}
+
+ul li {
+  list-style-type: none;
+  font-size: medium;
+}
