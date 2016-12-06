@@ -16,9 +16,11 @@ var ChatroomComponent = (function () {
         this.title = "Chatroom";
     }
     ChatroomComponent.prototype.getMessage = function () {
-        var _this = this;
-        this.messageService.getMessage().then(function (messages) { return _this.messages = messages; });
+        var x = this;
+        this.messageService.getMessage()
+            .then(function (messages) { return x.messages = messages; });
     };
+    //console.log(this.messages);
     ChatroomComponent.prototype.ngOnInit = function () {
         this.getMessage();
     };

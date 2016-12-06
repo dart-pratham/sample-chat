@@ -17,10 +17,12 @@ export class ChatroomComponent implements OnInit {
   constructor(private messageService: MessageService) {}
 
   getMessage(): void {
-    this.messageService.getMessage().then(messages => this.messages = messages);
+    let x = this;
+    this.messageService.getMessage()
+    .then(messages => x.messages = messages);
   }
-
-  ngOnInit(): void {
+   //console.log(this.messages);
+ ngOnInit(): void {
     this.getMessage();
   }
 
