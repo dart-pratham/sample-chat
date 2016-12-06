@@ -1,11 +1,11 @@
 <h1>{{title}}</h1>
 <div id="chatbox">
   <ul>
-    <li>{{mymsg}}</li>
+    <li *ngFor="let msg of messages">{{msg.text}}</li>
   </ul>
 </div>
 <div>
   <label>Your msg:</label>
   <input #messageBody placeholder="Your message">
-  <button (click)="save(messageBody.value); messageBody.value='' ">Send</button>
+  <button (click)="send(messageBody.value); messageBody.value='' ">Send</button>
 </div>

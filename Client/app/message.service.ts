@@ -6,12 +6,16 @@ import { Message } from './message';
 @Injectable()
 
 export class MessageService {
-  private ChatUrl = '/';
+  private ChatUrl = 'http://192.168.2.115:8000/';
   constructor (private http:Http) {}
 
   getMessage(): Promise<Message[]> {
-    return this.http.get(this.ChatUrl).toPromise()
-    .then(response => response.json().data as Message[])
+    return this.http.get(this.ChatUrl)
+    .toPromise()
+    .then(function(res){
+        console.log(res.json());
+        return (res.json() as Message[]);
+    })
     .catch(this.handleError);
   }
 
@@ -20,15 +24,15 @@ export class MessageService {
     return Promise.reject(error.message || error);
   }
 
-  private headers = new Headers({'content-Type':'application/json'});
+  private headers = new Headers({'Content-Type':'application/json'});
 
-  private PostUrl = '/post';
+  private PostUrl = 'http://192.168.2.115:8000/post/';
 
   add(name: string): Promise<Message> {
     return this.http
     .post(this.PostUrl , JSON.stringify({text: name}), {headers: this.headers})
     .toPromise()
-    .then(res => res.json().data)
+    .then(res => res.json())
     .catch(this.handleError);
   }
 

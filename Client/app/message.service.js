@@ -14,13 +14,17 @@ require('rxjs/add/operator/toPromise');
 var MessageService = (function () {
     function MessageService(http) {
         this.http = http;
-        this.ChatUrl = '/';
-        this.headers = new http_1.Headers({ 'content-Type': 'application/json' });
-        this.PostUrl = '/post';
+        this.ChatUrl = 'http://192.168.2.115:8000/';
+        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        this.PostUrl = 'http://192.168.2.115:8000/post/';
     }
     MessageService.prototype.getMessage = function () {
-        return this.http.get(this.ChatUrl).toPromise()
-            .then(function (response) { return response.json().data; })
+        return this.http.get(this.ChatUrl)
+            .toPromise()
+            .then(function (res) {
+            console.log(res.json());
+            return res.json();
+        })
             .catch(this.handleError);
     };
     MessageService.prototype.handleError = function (error) {
@@ -31,7 +35,7 @@ var MessageService = (function () {
         return this.http
             .post(this.PostUrl, JSON.stringify({ text: name }), { headers: this.headers })
             .toPromise()
-            .then(function (res) { return res.json().data; })
+            .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
     MessageService = __decorate([
