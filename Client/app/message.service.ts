@@ -3,16 +3,16 @@ import { Headers, Http  } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import { Message } from './message';
+import { SyncService } from './sync.service';
 @Injectable()
 
 export class MessageService {
   private ChatUrl = 'http://192.168.2.115:8000/';
-  constructor (private http:Http) {}
+  constructor (private http:Http,
+               private sync:SyncService) {}
 
   getMessage(): Promise<Message[]> {
-    return this.http.get(this.ChatUrl)
-    .toPromise()
-    .then(function(res){
+    return this.sync.getRequest(this.ChatUrl).then(function(res){
       console.log(res.json());
       return (res.json() as Message[]);
     })
@@ -23,15 +23,12 @@ export class MessageService {
     return Promise.reject(error.message || error);
   }
 
-  private headers = new Headers({'Content-Type':'application/json'});
-
   private PostUrl = 'http://192.168.2.115:8000/post/';
 
-  add(name: string): Promise<Message> {
-    return this.http
-    .post(this.PostUrl , JSON.stringify({text: name}), {headers: this.headers})
-    .toPromise()
+  add(name: string): Promise<Message[]> {
+   return this.sync.postRequest(this.PostUrl, {text: name})
     .then(res => res.json())
     .catch(this.handleError);
   }
+
 }

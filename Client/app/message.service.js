@@ -11,17 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
+var sync_service_1 = require('./sync.service');
 var MessageService = (function () {
-    function MessageService(http) {
+    function MessageService(http, sync) {
         this.http = http;
+        this.sync = sync;
         this.ChatUrl = 'http://192.168.2.115:8000/';
-        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.PostUrl = 'http://192.168.2.115:8000/post/';
     }
     MessageService.prototype.getMessage = function () {
-        return this.http.get(this.ChatUrl)
-            .toPromise()
-            .then(function (res) {
+        return this.sync.getRequest(this.ChatUrl).then(function (res) {
             console.log(res.json());
             return res.json();
         });
@@ -31,15 +30,13 @@ var MessageService = (function () {
         return Promise.reject(error.message || error);
     };
     MessageService.prototype.add = function (name) {
-        return this.http
-            .post(this.PostUrl, JSON.stringify({ text: name }), { headers: this.headers })
-            .toPromise()
+        return this.sync.postRequest(this.PostUrl, { text: name })
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
     MessageService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, sync_service_1.SyncService])
     ], MessageService);
     return MessageService;
 }());

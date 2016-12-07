@@ -6,13 +6,15 @@ import { AppComponent }  from './app.component';
 import { ChatroomComponent } from './chatroom.component';
 
 import { MessageService } from './message.service';
+import { SyncService } from './sync.service';
 
 @NgModule({
   imports:      [ BrowserModule,HttpModule ],
   declarations: [ AppComponent,
     ChatroomComponent
   ],
-  providers: [ MessageService ],
-  bootstrap:    [ AppComponent ]
+  providers: [ MessageService,
+    SyncService],
+    bootstrap:    [ AppComponent ]
 })
 export class AppModule {}
