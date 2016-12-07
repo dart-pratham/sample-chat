@@ -4,7 +4,6 @@ import { OnInit }            from '@angular/core';
 import { MessageService }    from './message.service';
 
 declare function WS4Redis({}): any;
-declare var ws4redis: any;
 
 @Component({
   moduleId: module.id,
