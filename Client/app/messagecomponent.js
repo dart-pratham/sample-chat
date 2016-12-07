@@ -16,11 +16,11 @@ var MessageComponent = (function () {
     __decorate([
         core_1.Input(), 
         __metadata('design:type', message_1.Message)
-    ], MessageComponent.prototype, "message", void 0);
+    ], MessageComponent.prototype, "msg", void 0);
     MessageComponent = __decorate([
         core_1.Component({
             selector: 'message-component',
-            template: "<div>\n  <ul>\n  <li>{{message.text}}</li>\n  <li>{{message.time}}</li>\n  <li>{{message.status}}</li>\n  </ul>\n  </div>"
+            template: "<div *ngIf = [msg]>\n  <ul>\n  <li>{{msg.text}}</li>\n  </ul>\n  </div>"
         }), 
         __metadata('design:paramtypes', [])
     ], MessageComponent);

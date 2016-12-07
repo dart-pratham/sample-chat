@@ -3,17 +3,15 @@ import { Message } from './message';
 
 @Component({
   selector: 'message-component',
-  template:`<div>
+  template:`<div *ngIf = [msg]>
   <ul>
-  <li>{{message.text}}</li>
-  <li>{{message.time}}</li>
-  <li>{{message.status}}</li>
+  <li>{{msg.text}}</li>
   </ul>
   </div>`
         })
 export class MessageComponent {
         @Input()
-        message: Message;
+        msg: Message;
         //this.message = new Message{};
 }
 

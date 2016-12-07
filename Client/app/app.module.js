@@ -14,12 +14,9 @@ var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
 var chatroom_component_1 = require('./chatroom.component');
-<<<<<<< HEAD
 var messagecomponent_1 = require('./messagecomponent');
-=======
 var login_component_1 = require('./login.component');
 var app_routing_1 = require('./app.routing');
->>>>>>> 9d685d2fda30ac06e0e6c5685826312f025be8ea
 var message_service_1 = require('./message.service');
 var login_service_1 = require('./login.service');
 var sync_service_1 = require('./sync.service');
@@ -28,17 +25,11 @@ var AppModule = (function () {
     }
     AppModule = __decorate([
         core_1.NgModule({
-<<<<<<< HEAD
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule],
-            declarations: [app_component_1.AppComponent, chatroom_component_1.ChatroomComponent, messagecomponent_1.MessageComponent],
-            providers: [message_service_1.MessageService, sync_service_1.SyncService],
-=======
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, app_routing_1.AppRoutingModule, http_1.HttpModule],
             declarations: [app_component_1.AppComponent,
-                chatroom_component_1.ChatroomComponent, login_component_1.LoginComponent
+                chatroom_component_1.ChatroomComponent, login_component_1.LoginComponent, messagecomponent_1.MessageComponent
             ],
             providers: [message_service_1.MessageService, login_service_1.LoginService, sync_service_1.SyncService],
->>>>>>> 9d685d2fda30ac06e0e6c5685826312f025be8ea
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
