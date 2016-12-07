@@ -30,5 +30,4 @@ export class MessageService {
     .then(res => res.json())
     .catch(this.handleError);
   }
-
 }

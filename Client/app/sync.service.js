@@ -17,12 +17,22 @@ var SyncService = (function () {
     }
     SyncService.prototype.getRequest = function (req) {
         var token = localStorage.getItem("token");
+<<<<<<< HEAD
         var header = new http_1.Headers({ 'Authorization': ' ' + token });
+=======
+        var header = new http_1.Headers({ 'Authorization': 'token ' + token });
+>>>>>>> 9d685d2fda30ac06e0e6c5685826312f025be8ea
         return this.http.get(req, { headers: header }).toPromise();
     };
     SyncService.prototype.postRequest = function (req, data) {
         var token = localStorage.getItem("token");
+<<<<<<< HEAD
         var header = new http_1.Headers([{ 'Content-Type': 'application/json' }, { 'Authorization': 'token ' + token }]);
+=======
+        var header = new http_1.Headers();
+        header.append("Content-Type", "application/json");
+        header.append("Authorization", "token " + token);
+>>>>>>> 9d685d2fda30ac06e0e6c5685826312f025be8ea
         return this.http.post(req, JSON.stringify(data), { headers: header }).toPromise();
     };
     SyncService = __decorate([

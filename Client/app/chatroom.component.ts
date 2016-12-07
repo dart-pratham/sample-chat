@@ -37,6 +37,7 @@ export class ChatroomComponent implements OnInit {
     };
   }
 
+
   updateChat(): void {
     console.log(this);
     this.getMessage();
