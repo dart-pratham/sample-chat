@@ -13,6 +13,7 @@ var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
 var chatroom_component_1 = require('./chatroom.component');
+var messagecomponent_1 = require('./messagecomponent');
 var message_service_1 = require('./message.service');
 var sync_service_1 = require('./sync.service');
 var AppModule = (function () {
@@ -21,11 +22,8 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, http_1.HttpModule],
-            declarations: [app_component_1.AppComponent,
-                chatroom_component_1.ChatroomComponent
-            ],
-            providers: [message_service_1.MessageService,
-                sync_service_1.SyncService],
+            declarations: [app_component_1.AppComponent, chatroom_component_1.ChatroomComponent, messagecomponent_1.MessageComponent],
+            providers: [message_service_1.MessageService, sync_service_1.SyncService],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

@@ -7,7 +7,7 @@ import { SyncService } from './sync.service';
 @Injectable()
 
 export class MessageService {
-  private ChatUrl = 'http://192.168.2.115:8000/';
+  private ChatUrl = 'http://192.168.2.115:8000/chat/';
   constructor (private http:Http,
                private sync:SyncService) {}
 

@@ -11,14 +11,14 @@ export class SyncService {
   constructor(private http:Http) {}
 
   getRequest(req: string): Promise<Response> {
-    private token = localStorage.getItem("token");
-    private headers = new Headers({'Authorization': ' ' + this.token});
-    return this.http.get(req,{headers: this.headers}).toPromise();
+    var token = localStorage.getItem("token");
+    var header = new Headers({'Authorization': ' ' + token});
+    return this.http.get(req,{headers:header}).toPromise();
   }
 
   postRequest(req: string, data: any): Promise<Response> {
-    private token = localStorage.getItem("token");
-    private headers = new Headers({'Content-Type':'application/json'},{'Authorization':' ' + this.token});
-    return this.http.post(req, JSON.stringify(data), {headers: this.headers}).toPromise();
+    var token = localStorage.getItem("token");
+    var header = new Headers([{'Content-Type':'application/json'},{'Authorization':'token ' + token}]);
+    return this.http.post(req, JSON.stringify(data), {headers: header}).toPromise();
   }
 }
