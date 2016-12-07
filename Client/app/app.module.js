@@ -14,6 +14,7 @@ var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
 var chatroom_component_1 = require('./chatroom.component');
 var message_service_1 = require('./message.service');
+var sync_service_1 = require('./sync.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -23,7 +24,8 @@ var AppModule = (function () {
             declarations: [app_component_1.AppComponent,
                 chatroom_component_1.ChatroomComponent
             ],
-            providers: [message_service_1.MessageService],
+            providers: [message_service_1.MessageService,
+                sync_service_1.SyncService],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
