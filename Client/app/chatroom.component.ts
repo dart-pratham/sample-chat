@@ -3,8 +3,6 @@ import { Message }           from './message';
 import { OnInit }            from '@angular/core';
 import { MessageService }    from './message.service';
 
-declare function WS4Redis({}): any;
-declare var ws4redis: any;
 
 @Component({
   moduleId: module.id,
@@ -24,15 +22,19 @@ export class ChatroomComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    var wsdict = {
-    uri: '{{ WEBSOCKET_URI }}foobar?subscribe-broadcast&publish-broadcast&echo',
-    receive_message: this.updateChat(),
-    heartbeat_msg:'--heartbeat--'
-    };
-    WS4Redis(wsdict);
+
+    let ws : WebSocket;
+
+    ws = new WebSocket("ws://192.168.2.115:8000/ws/chatchannel?subscribe-broadcast");
+    ws.onmessage = (event) => {
+      console.log("received " + event.data);
+this.getMessage();
+    }
+
   }
 
   updateChat(): void {
+    console.log(this);
     this.getMessage();
   };
 
