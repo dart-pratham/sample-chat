@@ -21,11 +21,17 @@ var ChatroomComponent = (function () {
     };
     ChatroomComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var ws;
-        ws = new WebSocket("ws://192.168.2.115:8000/ws/chatchannel?subscribe-broadcast");
-        ws.onmessage = function (event) {
+        this.ws = new WebSocket("ws://192.168.2.115:8000/ws/chatchannel?subscribe-broadcast");
+        this.ws.onmessage = function (event) {
             console.log("received " + event.data);
             _this.getMessage();
+        };
+    };
+    ChatroomComponent.prototype.ngOnDestroy = function () {
+        var _this = this;
+        this.ws.onclose = function (event) {
+            _this.ws = null;
+            console.log("Closed");
         };
     };
     ChatroomComponent.prototype.updateChat = function () {
