@@ -1,0 +1,17 @@
+<h2>{{title}}</h2>
+<form name = "loginForm" #f="ngForm" novalidate>
+  <div class="form-group">
+    <label for = "username"> Username: </label>
+    <input type = "text" class="form-control col-md-4" name = "username" [(ngModel)]="user.username" #username="ngModel" required />
+    <div *ngIf = "f.submitted && !username.valid" class="help-block">Username is required</div>
+  </div>
+  <div class="form-group">
+    <label for="password"> Password: </label>
+    <input type = "password" class="form-control col-md-4" name = "password" [(ngModel)]="user.password" #password="ngModel" required />
+    <div *ngIf = "f.submitted && !password.valid" class="help-block">Password is required</div>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary" (click)="login()">Login</button>
+  </div>
+  <div *ngIf="attempt" class = "alert">{{message}}</div>
+</form>
