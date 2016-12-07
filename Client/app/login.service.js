@@ -13,15 +13,15 @@ var http_1 = require('@angular/http');
 var LoginService = (function () {
     function LoginService(http) {
         this.http = http;
-        this.loginUrl = "http://192.168.42.130:8000/get-token/";
+        this.loginUrl = "http://192.168.2.115:8000/get-token/";
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     LoginService.prototype.login = function (username, password) {
         return this.http.post(this.loginUrl, JSON.stringify({ username: username, password: password }), { headers: this.headers })
-            .map(function (res) {
-            var token = res.json().token;
+            .toPromise()
+            .then(function (res) {
+            var token = res.json() && res.json().token;
             if (token) {
-                this.token = token;
                 localStorage.setItem('token', token);
                 return true;
             }
@@ -31,7 +31,8 @@ var LoginService = (function () {
         });
     };
     LoginService.prototype.logout = function () {
-        this.token;
+        this.token = null;
+        localStorage.clear();
     };
     LoginService = __decorate([
         core_1.Injectable(), 

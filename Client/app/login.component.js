@@ -21,11 +21,12 @@ var LoginComponent = (function () {
     }
     LoginComponent.prototype.ngOnInit = function () {
         this.user = new user_1.User();
+        this.flag = false;
     };
     LoginComponent.prototype.login = function () {
         var _this = this;
         console.log(this.user.username, this.user.password);
-        this.loginService.login(this.user.username, this.user.password).subscribe(function (flag) {
+        this.loginService.login(this.user.username, this.user.password).then(function (flag) {
             if (flag === true) {
                 _this.message = 'Login Succesful';
                 _this.attempt = true;

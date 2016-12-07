@@ -14,16 +14,18 @@ export class LoginComponent {
   message: string;
   user:User ;
   attempt = false;
+  flag: boolean;
 
   constructor (private loginService:LoginService,private router:Router ) {}
 
   ngOnInit(){
     this.user=new User();
+    this.flag = false;
   }
 
   login():void{
     console.log(this.user.username, this.user.password);
-    this.loginService.login(this.user.username,this.user.password).subscribe(flag=>{
+    this.loginService.login(this.user.username,this.user.password).then(flag=>{
       if(flag === true){
         this.message = 'Login Succesful';
         this.attempt= true;

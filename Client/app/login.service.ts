@@ -9,14 +9,14 @@ export class LoginService{
   token:string;
   constructor(private http:Http){
   }
-  private loginUrl = "http://192.168.42.130:8000/get-token/";
+  private loginUrl = "http://192.168.2.115:8000/get-token/";
   private headers = new Headers({'Content-Type':'application/json'});
-  login(username: string , password: string):Observable<boolean>{
+  login(username: string , password: string):Promise<boolean>{
     return this.http.post(this.loginUrl,JSON.stringify({username: username,password: password}),{ headers:this.headers })
-    .map(function(res:Response){
-      let token = res.json().token;
+    .toPromise()
+    .then(function(res:Response){
+      let token = res.json() && res.json().token;
       if(token){
-        this.token = token;
         localStorage.setItem('token',token);
         return true;
       }else{
@@ -25,6 +25,7 @@ export class LoginService{
     });
   }
   logout():void{
-    this.token
+    this.token = null;
+    localStorage.clear();
   }
 }
