@@ -32,7 +32,10 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     'rest_framework.authtoken',
+    'ws4redis',
     'task',
+    'channels',
+    'corsheaders',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,6 +54,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 )
 
 ROOT_URLCONF = 'sample.urls'
@@ -66,12 +71,20 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.static',
+                'ws4redis.context_processors.default',
             ],
         },
     },
 ]
-
-WSGI_APPLICATION = 'sample.wsgi.application'
+WSGI_APPLICATION = 'ws4redis.django_runserver.application'
+# WSGI_APPLICATION = 'sample.wsgi.application'
+WEBSOCKET_URL = '/ws/'
+WS4REDIS_EXPIRE = 3600
+WS4REDIS_HEARTBEAT = '--heartbeat--'
+WS4REDIS_HEARTBEAT = '--heartbeat--'
+WS4REDIS_PREFIX = 'demo'
+CORS_ORIGIN_ALLOW_ALL=True
 
 
 # Database
