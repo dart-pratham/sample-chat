@@ -7,3 +7,5 @@ class MyUser(models.Model):
 
 class Message(models.Model):
     text = models.CharField(max_length=100)
+    ready_to_fire = models.DateTimeField()
+    ready = models.BooleanField(default=False)

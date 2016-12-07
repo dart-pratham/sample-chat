@@ -8,6 +8,7 @@ from rest_framework import status
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from task.consumers import caller
+from task import tasks
 
 class ShowAllMessageView(APIView):
     authentication_classes = AUTHENTICATION_CLASSES
@@ -22,11 +23,12 @@ class ShowAllMessageView(APIView):
 
 
 class PostMessageView(APIView):
-    authentication_classes = AUTHENTICATION_CLASSES
-    permission_classes = PERMISSION_CLASSES
+    #authentication_classes = AUTHENTICATION_CLASSES
+    #permission_classes = PERMISSION_CLASSES
     def post(self,request,format=None):
         serializer = MessageSerializer(data = request.data)
         if serializer.is_valid():
-            serializer.save()
+            message = serializer.save()
+            tasks.readyTask.apply_async(message , eta=message.time_to_fire)
             caller()
         return Response(serializer.data)
