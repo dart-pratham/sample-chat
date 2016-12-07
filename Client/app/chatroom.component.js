@@ -20,11 +20,19 @@ var ChatroomComponent = (function () {
         this.messageService.getMessage().then(function (messages) { return _this.messages = messages; });
     };
     ChatroomComponent.prototype.ngOnInit = function () {
-        this.getMessage();
+        var _this = this;
+        var ws;
+        ws = new WebSocket("ws://192.168.2.115:8000/ws/chatchannel?subscribe-broadcast");
+        ws.onmessage = function (event) {
+            console.log("received " + event.data);
+            _this.getMessage();
+        };
     };
     ChatroomComponent.prototype.updateChat = function () {
+        console.log(this);
         this.getMessage();
     };
+    ;
     ChatroomComponent.prototype.send = function (body) {
         var _this = this;
         body = body.trim();

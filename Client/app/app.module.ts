@@ -11,13 +11,14 @@ import { AppRoutingModule } from './app.routing';
 
 import { MessageService } from './message.service';
 import { LoginService } from './login.service';
+import { SyncService } from './sync.service';
 
 @NgModule({
   imports:      [ BrowserModule,FormsModule,AppRoutingModule,HttpModule ],
   declarations: [ AppComponent,
     ChatroomComponent,LoginComponent
   ],
-  providers: [ MessageService,LoginService ],
+  providers: [ MessageService,LoginService,SyncService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule {}
