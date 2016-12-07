@@ -17,6 +17,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('text', models.CharField(max_length=100)),
+                ('ready_to_fire', models.DateTimeField()),
+                ('ready', models.BooleanField(default=False)),
             ],
         ),
         migrations.CreateModel(
