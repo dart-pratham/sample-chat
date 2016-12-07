@@ -3,7 +3,6 @@ import { Message }           from './message';
 import { OnInit }            from '@angular/core';
 import { MessageService }    from './message.service';
 
-
 @Component({
   moduleId: module.id,
   selector: 'chat-room',
