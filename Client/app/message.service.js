@@ -16,7 +16,7 @@ var MessageService = (function () {
     function MessageService(http, sync) {
         this.http = http;
         this.sync = sync;
-        this.ChatUrl = 'http://192.168.2.115:8000/';
+        this.ChatUrl = 'http://192.168.2.115:8000/chat/';
         this.PostUrl = 'http://192.168.2.115:8000/post/';
     }
     MessageService.prototype.getMessage = function () {

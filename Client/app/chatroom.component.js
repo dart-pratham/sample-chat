@@ -20,14 +20,16 @@ var ChatroomComponent = (function () {
         this.messageService.getMessage().then(function (messages) { return _this.messages = messages; });
     };
     ChatroomComponent.prototype.ngOnInit = function () {
-        var wsdict = {
-            uri: '{{ WEBSOCKET_URI }}foobar?subscribe-broadcast&publish-broadcast&echo',
-            receive_message: this.updateChat(),
-            heartbeat_msg: '--heartbeat--'
+        var _this = this;
+        var ws;
+        ws = new WebSocket("ws://192.168.2.115:8000/ws/chatchannel?subscribe-broadcast");
+        ws.onmessage = function (event) {
+            console.log("received " + event.data);
+            _this.getMessage();
         };
-        WS4Redis(wsdict);
     };
     ChatroomComponent.prototype.updateChat = function () {
+        console.log(this);
         this.getMessage();
     };
     ;
