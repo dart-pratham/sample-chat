@@ -20,11 +20,17 @@ var ChatroomComponent = (function () {
         this.messageService.getMessage().then(function (messages) { return _this.messages = messages; });
     };
     ChatroomComponent.prototype.ngOnInit = function () {
-        this.getMessage();
+        var wsdict = {
+            uri: '{{ WEBSOCKET_URI }}foobar?subscribe-broadcast&publish-broadcast&echo',
+            receive_message: this.updateChat(),
+            heartbeat_msg: '--heartbeat--'
+        };
+        WS4Redis(wsdict);
     };
     ChatroomComponent.prototype.updateChat = function () {
         this.getMessage();
     };
+    ;
     ChatroomComponent.prototype.send = function (body) {
         var _this = this;
         body = body.trim();
@@ -32,7 +38,6 @@ var ChatroomComponent = (function () {
             return;
         }
         this.messageService.add(body).then(function (msg) { return _this.updateChat(); });
-        ;
     };
     ChatroomComponent = __decorate([
         core_1.Component({
