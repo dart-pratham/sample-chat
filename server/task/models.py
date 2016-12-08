@@ -13,6 +13,6 @@ class Message(models.Model):
     time_to_fire = models.DateTimeField(null=True , blank=True)
     ready = models.BooleanField(default=False)
 
-class Notification(model.Model):
+class Notification(models.Model):
     user = models.ForeignKey(User)
     message = models.ForeignKey(Message)
