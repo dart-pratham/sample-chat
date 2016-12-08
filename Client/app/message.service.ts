@@ -7,7 +7,7 @@ import { SyncService } from './sync.service';
 @Injectable()
 
 export class MessageService {
-  private ChatUrl = 'http://192.168.2.115:8000/chat/';
+  private ChatUrl = 'http://192.168.2.184:8000/chat/';
   constructor (private http:Http,
                private sync:SyncService) {}
 
@@ -23,7 +23,7 @@ export class MessageService {
     return Promise.reject(error.message || error);
   }
 
-  private PostUrl = 'http://192.168.2.115:8000/post/';
+  private PostUrl = 'http://192.168.2.184:8000/post/';
 
   add(name: string): Promise<Message[]> {
    return this.sync.postRequest(this.PostUrl, {text: name})
