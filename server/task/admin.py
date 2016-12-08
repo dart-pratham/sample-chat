@@ -1,10 +1,5 @@
 from django.contrib import admin
-from task.models import Message , MyUser
-
-class MessageAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Message, MessageAdmin)
-
-class MyUserAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(MyUser, MyUserAdmin)
+from task.models import Message,MyUser
+# Register your models here.
+admin.site.register(Message)
+admin.site.register(MyUser)

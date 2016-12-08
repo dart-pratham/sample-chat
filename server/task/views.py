@@ -23,12 +23,15 @@ class ShowAllMessageView(APIView):
 
 
 class PostMessageView(APIView):
-    #authentication_classes = AUTHENTICATION_CLASSES
-    #permission_classes = PERMISSION_CLASSES
+    authentication_classes = AUTHENTICATION_CLASSES
+    permission_classes = PERMISSION_CLASSES
     def post(self,request,format=None):
+
         serializer = MessageSerializer(data = request.data)
         if serializer.is_valid():
-            message = serializer.save()
-            tasks.readyTask.apply_async(message , eta=message.time_to_fire)
+            message=serializer.save()
+            tasks.readyTask.apply_async([message.pk])
             caller()
-        return Response(serializer.data)
+        #return Response(serializer.data)
+        #tasks.readyTask.apply_async([1])
+        return Response(14)
