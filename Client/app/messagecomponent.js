@@ -22,7 +22,7 @@ __decorate([
 MessageComponent = __decorate([
     core_1.Component({
         selector: 'message-component',
-        template: "<div *ngIf = [msg]>\n  <ul>\n  <li>{{msg.text}}</li>\n  </ul>\n  </div>"
+        template: "<div *ngIf = [msg]>\n  <ul>\n  <li>{{msg.text}}  {{msg.time_to_fire}}</li>\n  </ul>\n  </div>"
     }),
     __metadata("design:paramtypes", [])
 ], MessageComponent);

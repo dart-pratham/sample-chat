@@ -21,7 +21,7 @@ var ChatroomComponent = (function () {
     };
     ChatroomComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.ws = new WebSocket("ws://192.168.2.115:8000/ws/chatchannel?subscribe-broadcast");
+        this.ws = new WebSocket("ws://192.168.2.184:8000/ws/chatchannel?subscribe-broadcast");
         this.ws.onmessage = function (event) {
             console.log("received " + event.data);
             _this.getMessage();
@@ -39,13 +39,13 @@ var ChatroomComponent = (function () {
         this.getMessage();
     };
     ;
-    ChatroomComponent.prototype.send = function (body) {
+    ChatroomComponent.prototype.send = function (body, time) {
         var _this = this;
         body = body.trim();
         if (!body) {
             return;
         }
-        this.messageService.add(body).then(function (msg) { return _this.updateChat(); });
+        this.messageService.add(body, time).then(function (msg) { return _this.updateChat(); });
     };
     return ChatroomComponent;
 }());

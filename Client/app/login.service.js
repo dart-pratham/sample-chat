@@ -13,7 +13,7 @@ var http_1 = require("@angular/http");
 var LoginService = (function () {
     function LoginService(http) {
         this.http = http;
-        this.loginUrl = "http://192.168.2.115:8000/get-token/";
+        this.loginUrl = "http://192.168.2.184:8000/get-token/";
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     LoginService.prototype.login = function (username, password) {

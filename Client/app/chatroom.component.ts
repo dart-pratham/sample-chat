@@ -24,7 +24,7 @@ export class ChatroomComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.ws = new WebSocket("ws://192.168.2.115:8000/ws/chatchannel?subscribe-broadcast");
+    this.ws = new WebSocket("ws://192.168.2.184:8000/ws/chatchannel?subscribe-broadcast");
     this.ws.onmessage = (event) => {
       console.log("received " + event.data);
       this.getMessage();
@@ -43,9 +43,9 @@ export class ChatroomComponent implements OnInit {
     this.getMessage();
   };
 
-  send(body: string): void {
+  send(body: string,time: string): void {
     body = body.trim();
     if(!body) {return;}
-    this.messageService.add(body).then(msg => this.updateChat());
+    this.messageService.add(body,time).then(msg => this.updateChat());
   }
 }

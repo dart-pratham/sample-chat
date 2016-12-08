@@ -8,26 +8,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var router_1 = require("@angular/router");
 var core_1 = require("@angular/core");
-var login_component_1 = require("./login.component");
-var chatroom_component_1 = require("./chatroom.component");
-var routes = [
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
-    { path: 'chat', component: chatroom_component_1.ChatroomComponent },
-    { path: 'login', component: login_component_1.LoginComponent }
-];
-var AppRoutingModule = (function () {
-    function AppRoutingModule() {
+var MessageListComponent = (function () {
+    function MessageListComponent() {
     }
-    return AppRoutingModule;
+    return MessageListComponent;
 }());
-AppRoutingModule = __decorate([
-    core_1.NgModule({
-        imports: [router_1.RouterModule.forRoot(routes)],
-        exports: [router_1.RouterModule]
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Array)
+], MessageListComponent.prototype, "messages", void 0);
+MessageListComponent = __decorate([
+    core_1.Component({
+        selector: 'message-list',
+        template: "\n  <div *ngIf=[messages]>\n  <message-component *ngFor= \"let message of messages\" [msg]=\"message\"></message-component>\n  </div>\n  "
     }),
     __metadata("design:paramtypes", [])
-], AppRoutingModule);
-exports.AppRoutingModule = AppRoutingModule;
-//# sourceMappingURL=app.routing.js.map
+], MessageListComponent);
+exports.MessageListComponent = MessageListComponent;
+//# sourceMappingURL=messagelist.component.js.map

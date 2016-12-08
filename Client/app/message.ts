@@ -1,5 +1,5 @@
 export class Message {
   text: string;
-  ready: boolean;
-  time: string;
+  id: number;
+  time_to_fire: string;
 }
