@@ -9,5 +9,10 @@ class MyUser(models.Model):
 
 class Message(models.Model):
     text = models.CharField(max_length=100)
-    ready_to_fire = models.DateTimeField(default = timezone.now())  
+    message_by = models.ForeignKey(MyUser , null=True ,blank=True)
+    time_to_fire = models.DateTimeField(null=True , blank=True)
     ready = models.BooleanField(default=False)
+
+class Notification(models.Model):
+    user = models.ForeignKey(User)
+    message = models.ForeignKey(Message)
