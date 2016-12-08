@@ -3,7 +3,8 @@
   <message-list [messages]="messages"></message-list>
 </div>
 <div>
-  <label>Your msg:</label>
-  <input #messageBody placeholder="Your message">
-  <button (click)="send(messageBody.value); messageBody.value='' ">Send</button>
+    <label>Your msg:</label>
+    <input #messageBody placeholder="Your message">
+    <input type = "datetime-local" #timeOfFire >
+    <button (click)="send(messageBody.value,timeOfFire.value); messageBody.value='';">Send</button>
 </div>

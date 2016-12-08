@@ -1,17 +1,15 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input,OnInit } from '@angular/core';
 import { Message } from './message';
 
 @Component({
   selector: 'message-component',
   template:`<div *ngIf = [msg]>
   <ul>
-  <li>{{msg.text}}</li>
+  <li>{{msg.text}}  {{msg.time_to_fire}}</li>
   </ul>
   </div>`
 })
 export class MessageComponent {
   @Input()
   msg: Message;
-  //this.message = new Message{};
 }
-
