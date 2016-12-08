@@ -7,12 +7,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('task', '0003_auto_20161207_1552'),
+        ('task', '0009_auto_20161208_1142'),
     ]
 
     operations = [
-        migrations.RemoveField(
+        migrations.AlterField(
             model_name='message',
-            name='ready_to_fire',
+            name='time_to_fire',
+            field=models.DateTimeField(),
         ),
     ]
