@@ -10,35 +10,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
-require('rxjs/add/operator/toPromise');
 var sync_service_1 = require('./sync.service');
-var MessageService = (function () {
-    function MessageService(http, sync) {
+var TaskService = (function () {
+    function TaskService(http, sync) {
         this.http = http;
         this.sync = sync;
-        this.ChatUrl = 'http://192.168.2.115:8000/chat/';
-        this.PostUrl = 'http://192.168.2.115:8000/post/';
+        this.TaskUrl = 'URL';
+        this.TaskPostUrl = 'URL';
     }
-    MessageService.prototype.getMessage = function () {
-        return this.sync.getRequest(this.ChatUrl).then(function (res) {
-            console.log(res.json());
+    TaskService.prototype.getTask = function () {
+        return this.sync.getRequest(this.TaskUrl).then(function (res) {
             return res.json();
         });
     };
-    MessageService.prototype.handleError = function (error) {
+    TaskService.prototype.handleError = function (error) {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
     };
-    MessageService.prototype.add = function (name) {
-        return this.sync.postRequest(this.PostUrl, { text: name })
+    TaskService.prototype.check = function (id) {
+        return this.sync.postRequest(this.TaskPostUrl, { id: id })
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    MessageService = __decorate([
+    TaskService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http, sync_service_1.SyncService])
-    ], MessageService);
-    return MessageService;
+    ], TaskService);
+    return TaskService;
 }());
-exports.MessageService = MessageService;
-//# sourceMappingURL=message.service.js.map
+exports.TaskService = TaskService;
+//# sourceMappingURL=task.service.js.map

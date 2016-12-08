@@ -13,11 +13,6 @@ export class MessageComponent implements OnInit{
   @Input()
   msg: Message;
   ngOnInit(): void {
-    var hour = new Date().getHours().toString();
-    var minute = new Date().getMinutes().toString();
-    var second = new Date().getSeconds().toString();
-    this.msg.time = hour +":" + minute +":" + second ;
-    console.log(this.msg.time);
   }
 }
 

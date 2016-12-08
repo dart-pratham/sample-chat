@@ -26,7 +26,6 @@ export class ChatroomComponent implements OnInit {
 
     this.ws = new WebSocket("ws://192.168.2.184:8000/ws/chatchannel?subscribe-broadcast");
     this.ws.onmessage = (event) => {
-      console.log("received " + event.data);
       this.getMessage();
     }
   }
@@ -39,7 +38,6 @@ export class ChatroomComponent implements OnInit {
 
 
   updateChat(): void {
-    console.log(this);
     this.getMessage();
   };
 

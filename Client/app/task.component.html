@@ -1,0 +1,6 @@
+<h2>{{title}}</h2>
+<div *ngFor="let task for tasks">
+  <ul>
+    <li><span>{{task.text}}</span><span>{{task.ready_to_fire}}</span><button class= "confirm" (click)="confirm(task.id)">Confirm</button></li>
+  </ul>
+</div>

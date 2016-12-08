@@ -17,6 +17,7 @@ var chatroom_component_1 = require('./chatroom.component');
 var messagecomponent_1 = require('./messagecomponent');
 var messagelist_component_1 = require('./messagelist.component');
 var login_component_1 = require('./login.component');
+var task_component_1 = require('./task.component');
 var app_routing_1 = require('./app.routing');
 var message_service_1 = require('./message.service');
 var login_service_1 = require('./login.service');
@@ -27,7 +28,7 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, app_routing_1.AppRoutingModule, http_1.HttpModule],
-            declarations: [app_component_1.AppComponent, chatroom_component_1.ChatroomComponent, login_component_1.LoginComponent, messagecomponent_1.MessageComponent, messagelist_component_1.MessageListComponent],
+            declarations: [app_component_1.AppComponent, chatroom_component_1.ChatroomComponent, login_component_1.LoginComponent, messagecomponent_1.MessageComponent, messagelist_component_1.MessageListComponent, task_component_1.TaskComponent],
             providers: [message_service_1.MessageService, login_service_1.LoginService, sync_service_1.SyncService],
             bootstrap: [app_component_1.AppComponent]
         }), 

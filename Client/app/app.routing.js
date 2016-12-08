@@ -12,9 +12,11 @@ var router_1 = require('@angular/router');
 var core_1 = require('@angular/core');
 var login_component_1 = require('./login.component');
 var chatroom_component_1 = require('./chatroom.component');
+var task_component_1 = require('./task.component');
 var routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'chat', component: chatroom_component_1.ChatroomComponent },
+    { path: 'task', component: task_component_1.TaskComponent },
     { path: 'login', component: login_component_1.LoginComponent }
 ];
 var AppRoutingModule = (function () {
