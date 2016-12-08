@@ -14,13 +14,18 @@ require('rxjs/add/operator/toPromise');
 var SyncService = (function () {
     function SyncService(http) {
         this.http = http;
-        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     SyncService.prototype.getRequest = function (req) {
-        return this.http.get(req).toPromise();
+        var token = localStorage.getItem("token");
+        var header = new http_1.Headers({ 'Authorization': 'token ' + token });
+        return this.http.get(req, { headers: header }).toPromise();
     };
     SyncService.prototype.postRequest = function (req, data) {
-        return this.http.post(req, JSON.stringify(data), { headers: this.headers }).toPromise();
+        var token = localStorage.getItem("token");
+        var header = new http_1.Headers();
+        header.append("Content-Type", "application/json");
+        header.append("Authorization", "token " + token);
+        return this.http.post(req, JSON.stringify(data), { headers: header }).toPromise();
     };
     SyncService = __decorate([
         core_1.Injectable(), 

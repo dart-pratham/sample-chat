@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { ChatroomComponent } from './chatroom.component';
 
 @Component({
+  moduleId: module.id,
   selector: 'my-app',
-  template: `<chat-room></chat-room>`,
+  template: `<router-outlet></router-outlet>`
 })
 export class AppComponent  { }

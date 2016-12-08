@@ -16,21 +16,27 @@ export class ChatroomComponent implements OnInit {
 
   constructor(private messageService: MessageService) {}
 
+  private ws : WebSocket;
+
   getMessage(): void {
     this.messageService.getMessage().then(messages => this.messages = messages);
   }
 
   ngOnInit(): void {
 
-    let ws : WebSocket;
-
-    ws = new WebSocket("ws://192.168.2.115:8000/ws/chatchannel?subscribe-broadcast");
-    ws.onmessage = (event) => {
+    this.ws = new WebSocket("ws://192.168.2.115:8000/ws/chatchannel?subscribe-broadcast");
+    this.ws.onmessage = (event) => {
       console.log("received " + event.data);
       this.getMessage();
     }
-
   }
+  ngOnDestroy(): void {
+    this.ws.onclose = (event:CloseEvent) => {
+      this.ws = null;
+      console.log("Closed");
+    };
+  }
+
 
   updateChat(): void {
     console.log(this);

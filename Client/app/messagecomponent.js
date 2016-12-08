@@ -9,18 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var message_1 = require('./message');
+var MessageComponent = (function () {
+    function MessageComponent() {
     }
-    AppComponent = __decorate([
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', message_1.Message)
+    ], MessageComponent.prototype, "msg", void 0);
+    MessageComponent = __decorate([
         core_1.Component({
-            moduleId: module.id,
-            selector: 'my-app',
-            template: "<router-outlet></router-outlet>"
+            selector: 'message-component',
+            template: "<div *ngIf = [msg]>\n  <ul>\n  <li>{{msg.text}}</li>\n  </ul>\n  </div>"
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], MessageComponent);
+    return MessageComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.MessageComponent = MessageComponent;
+//# sourceMappingURL=messagecomponent.js.map

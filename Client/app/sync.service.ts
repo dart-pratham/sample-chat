@@ -7,15 +7,20 @@ import { Message } from './message';
 
 @Injectable()
 export class SyncService {
-  
+
   constructor(private http:Http) {}
 
   getRequest(req: string): Promise<Response> {
-     return this.http.get(req).toPromise();
+    var token = localStorage.getItem("token");
+    var header = new Headers({'Authorization': 'token ' + token});
+    return this.http.get(req,{headers: header}).toPromise();
   }
-  private headers = new Headers({'Content-Type':'application/json'});
 
   postRequest(req: string, data: any): Promise<Response> {
-    return this.http.post(req, JSON.stringify(data), {headers: this.headers}).toPromise();
+    var token = localStorage.getItem("token");
+    var header = new Headers();
+    header.append("Content-Type", "application/json");
+    header.append("Authorization", "token " + token);
+    return this.http.post(req, JSON.stringify(data), {headers: header}).toPromise();
   }
 }
