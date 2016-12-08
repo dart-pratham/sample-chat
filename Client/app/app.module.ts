@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent }  from './app.component';
 import { ChatroomComponent } from './chatroom.component';
+import { MessageComponent } from './messagecomponent';
 import { LoginComponent } from './login.component';
 
 import { AppRoutingModule } from './app.routing';
@@ -16,7 +17,7 @@ import { SyncService } from './sync.service';
 @NgModule({
   imports:      [ BrowserModule,FormsModule,AppRoutingModule,HttpModule ],
   declarations: [ AppComponent,
-    ChatroomComponent,LoginComponent
+    ChatroomComponent,LoginComponent, MessageComponent
   ],
   providers: [ MessageService,LoginService,SyncService ],
   bootstrap:    [ AppComponent ]
