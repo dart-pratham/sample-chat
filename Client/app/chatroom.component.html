@@ -1,6 +1,6 @@
 <h1>{{title}}</h1>
 <div id="chatbox" >
-  <message-component *ngFor = "let message of messages" [msg]="message"></message-component>
+  <message-list [messages]="messages"></message-list>
 </div>
 <div>
   <label>Your msg:</label>

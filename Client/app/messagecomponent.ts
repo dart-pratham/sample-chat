@@ -8,10 +8,10 @@ import { Message } from './message';
   <li>{{msg.text}}</li>
   </ul>
   </div>`
-        })
+})
 export class MessageComponent {
-        @Input()
-        msg: Message;
-        //this.message = new Message{};
+  @Input()
+  msg: Message;
+  //this.message = new Message{};
 }
 
