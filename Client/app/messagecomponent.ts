@@ -14,4 +14,3 @@ export class MessageComponent {
         msg: Message;
         //this.message = new Message{};
 }
-
