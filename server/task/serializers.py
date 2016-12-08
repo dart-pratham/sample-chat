@@ -4,4 +4,4 @@ from task.models import Message
 class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Message
-        fields = ('text',)
+        fields = ("__all__")

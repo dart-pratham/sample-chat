@@ -22,14 +22,14 @@ var routes = [
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
     }
-    AppRoutingModule = __decorate([
-        core_1.NgModule({
-            imports: [router_1.RouterModule.forRoot(routes)],
-            exports: [router_1.RouterModule]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AppRoutingModule);
     return AppRoutingModule;
 }());
+AppRoutingModule = __decorate([
+    core_1.NgModule({
+        imports: [router_1.RouterModule.forRoot(routes)],
+        exports: [router_1.RouterModule]
+    }),
+    __metadata("design:paramtypes", [])
+], AppRoutingModule);
 exports.AppRoutingModule = AppRoutingModule;
 //# sourceMappingURL=app.routing.js.map

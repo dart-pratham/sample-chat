@@ -5,7 +5,7 @@ import { Message } from './message';
   selector: 'message-component',
   template:`<div *ngIf = [msg]>
   <ul>
-  <li>{{msg.text}}</li>
+  <li>{{msg.text}}  {{msg.time_to_fire}}</li>
   </ul>
   </div>`
 })
@@ -15,4 +15,3 @@ export class MessageComponent implements OnInit{
   ngOnInit(): void {
   }
 }
-

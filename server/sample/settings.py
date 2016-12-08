@@ -78,7 +78,7 @@ TEMPLATES = [
     },
 ]
 WSGI_APPLICATION = 'ws4redis.django_runserver.application'
-# WSGI_APPLICATION = 'sample.wsgi.application'
+#WSGI_APPLICATION = 'sample.wsgi.application'
 WEBSOCKET_URL = '/ws/'
 WS4REDIS_EXPIRE = 3600
 WS4REDIS_HEARTBEAT = '--heartbeat--'
@@ -116,3 +116,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+CELERY_BROKER_URL = 'redis://localhost:6379/0'

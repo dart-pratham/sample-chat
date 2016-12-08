@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-require('rxjs/add/operator/toPromise');
-var sync_service_1 = require('./sync.service');
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+require("rxjs/add/operator/toPromise");
+var sync_service_1 = require("./sync.service");
 var MessageService = (function () {
     function MessageService(http, sync) {
         this.http = http;
@@ -29,16 +29,18 @@ var MessageService = (function () {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
     };
-    MessageService.prototype.add = function (name) {
-        return this.sync.postRequest(this.PostUrl, { text: name })
+    MessageService.prototype.add = function (task, time_of_fire) {
+        var time = new Date(time_of_fire);
+        return this.sync.postRequest(this.PostUrl, { text: task, time_to_fire: time })
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    MessageService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http, sync_service_1.SyncService])
-    ], MessageService);
     return MessageService;
 }());
+MessageService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http,
+        sync_service_1.SyncService])
+], MessageService);
 exports.MessageService = MessageService;
 //# sourceMappingURL=message.service.js.map
