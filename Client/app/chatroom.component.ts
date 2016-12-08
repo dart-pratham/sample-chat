@@ -2,6 +2,7 @@ import { Component }         from '@angular/core';
 import { Message }           from './message';
 import { OnInit }            from '@angular/core';
 import { MessageService }    from './message.service';
+import { AllMessages, FilterMessages, Mixin }   from './generic-message';
 
 @Component({
   moduleId: module.id,
@@ -10,9 +11,12 @@ import { MessageService }    from './message.service';
   styleUrls: ['chatroom.component.css']
 })
 
-export class ChatroomComponent implements OnInit {
+@Mixin([AllMessages, FilterMessages])
+export class ChatroomComponent implements OnInit, AllMessages, FilterMessages {
   title = "Chatroom";
   messages: Message[];
+  show: () => void;
+  filter: () => void;
 
   constructor(private messageService: MessageService) {}
 

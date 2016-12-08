@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var message_service_1 = require('./message.service');
+var generic_message_1 = require('./generic-message');
 var ChatroomComponent = (function () {
     function ChatroomComponent(messageService) {
         this.messageService = messageService;
@@ -53,7 +54,8 @@ var ChatroomComponent = (function () {
             selector: 'chat-room',
             templateUrl: 'chatroom.component.html',
             styleUrls: ['chatroom.component.css']
-        }), 
+        }),
+        generic_message_1.Mixin([generic_message_1.AllMessages, generic_message_1.FilterMessages]), 
         __metadata('design:paramtypes', [message_service_1.MessageService])
     ], ChatroomComponent);
     return ChatroomComponent;

@@ -2,8 +2,12 @@
 <div id="chatbox" >
   <message-list [messages]="messages"></message-list>
 </div>
+<br>
 <div>
   <label>Your msg:</label>
   <input #messageBody placeholder="Your message">
   <button (click)="send(messageBody.value); messageBody.value='' ">Send</button>
+  <br>
+  <br>
+  <a routerLink="/filterroom"><h3>FilterRoom</h3></a>
 </div>
