@@ -13,6 +13,13 @@ var message_1 = require('./message');
 var MessageComponent = (function () {
     function MessageComponent() {
     }
+    MessageComponent.prototype.ngOnInit = function () {
+        var hour = new Date().getHours().toString();
+        var minute = new Date().getMinutes().toString();
+        var second = new Date().getSeconds().toString();
+        this.msg.time = hour + ":" + minute + ":" + second;
+        console.log(this.msg.time);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', message_1.Message)

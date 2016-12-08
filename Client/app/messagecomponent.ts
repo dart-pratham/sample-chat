@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input,OnInit } from '@angular/core';
 import { Message } from './message';
 
 @Component({
@@ -9,9 +9,15 @@ import { Message } from './message';
   </ul>
   </div>`
 })
-export class MessageComponent {
+export class MessageComponent implements OnInit{
   @Input()
   msg: Message;
-  //this.message = new Message{};
+  ngOnInit(): void {
+    var hour = new Date().getHours().toString();
+    var minute = new Date().getMinutes().toString();
+    var second = new Date().getSeconds().toString();
+    this.msg.time = hour +":" + minute +":" + second ;
+    console.log(this.msg.time);
+  }
 }
 
