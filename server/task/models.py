@@ -16,3 +16,4 @@ class Message(models.Model):
 class Notification(models.Model):
     user = models.ForeignKey(User)
     message = models.ForeignKey(Message)
+    approve = models.BooleanField(default=False)
