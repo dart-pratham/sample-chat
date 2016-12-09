@@ -14,6 +14,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var message_service_1 = require('./message.service');
+var ip_address_1 = require('./ip.address');
 var ChatroomComponent = (function () {
     function ChatroomComponent(messageService) {
         this.messageService = messageService;
@@ -27,7 +29,8 @@ var ChatroomComponent = (function () {
     };
     ChatroomComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.ws = new WebSocket("ws://127.0.0.1:8000/ws/chatchannel?subscribe-broadcast");
+        console.log(this);
+        this.ws = new WebSocket("ws://" + ip_address_1.IP + "/ws/chatchannel?subscribe-broadcast");
         this.ws.onmessage = function (event) {
             _this.getMessage();
         };
@@ -45,11 +48,10 @@ var ChatroomComponent = (function () {
     ;
     return ChatroomComponent;
 }());
-exports.ChatroomComponent = ChatroomComponent;
 var AllMessageListComponent = (function (_super) {
     __extends(AllMessageListComponent, _super);
-    function AllMessageListComponent() {
-        _super.apply(this, arguments);
+    function AllMessageListComponent(messageService) {
+        this.messageService = messageService;
     }
     AllMessageListComponent.prototype.getMessage = function () {
         var _this = this;
@@ -61,15 +63,15 @@ var AllMessageListComponent = (function (_super) {
             selector: 'all-message-list',
             template: "\n  <message-list [messages]=\"messages\"></message-list>\n  "
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [message_service_1.MessageService])
     ], AllMessageListComponent);
     return AllMessageListComponent;
 }(ChatroomComponent));
 exports.AllMessageListComponent = AllMessageListComponent;
 var UserMessageListComponent = (function (_super) {
     __extends(UserMessageListComponent, _super);
-    function UserMessageListComponent() {
-        _super.apply(this, arguments);
+    function UserMessageListComponent(messageService) {
+        this.messageService = messageService;
     }
     UserMessageListComponent.prototype.getMessage = function () {
         var _this = this;
@@ -85,7 +87,7 @@ var UserMessageListComponent = (function (_super) {
             selector: 'user-message-list',
             template: "\n  <message-list [messages]=\"messages\"></message-list>\n  "
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [message_service_1.MessageService])
     ], UserMessageListComponent);
     return UserMessageListComponent;
 }(ChatroomComponent));

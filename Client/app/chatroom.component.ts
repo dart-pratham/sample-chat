@@ -3,11 +3,12 @@ import { Message }           from './message';
 import { OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { MessageService }    from './message.service';
 import { User }              from './user';
+import { IP } from './ip.address';
 
-export class ChatroomComponent implements OnInit, OnChanges, OnDestroy{
+class ChatroomComponent implements OnInit, OnChanges, OnDestroy{
   title = "Chatroom";
   messages: Message[];
-  
+
   constructor(public messageService: MessageService) {}
   private ws : WebSocket;
 
@@ -21,9 +22,11 @@ export class ChatroomComponent implements OnInit, OnChanges, OnDestroy{
 
   ngOnInit(): void {
 
-    this.ws = new WebSocket("ws://127.0.0.1:8000/ws/chatchannel?subscribe-broadcast");
+    console.log(this);
+    this.ws = new WebSocket("ws://"+ IP + "/ws/chatchannel?subscribe-broadcast");
     this.ws.onmessage = (event) => {
       this.getMessage();
+
     }
   }
   ngOnDestroy(): void {
@@ -47,6 +50,7 @@ export class ChatroomComponent implements OnInit, OnChanges, OnDestroy{
 
 export class AllMessageListComponent extends ChatroomComponent {
 
+  constructor(private messageService: MessageService) {}
   getMessage(): void {
     this.messageService.getMessage().then(messages => this.messages = messages);
   }
@@ -65,6 +69,7 @@ export class UserMessageListComponent extends ChatroomComponent {
   @Input()
   user: any;
 
+  constructor(private messageService: MessageService) {}
   getMessage(): void {
     this.messageService.getUserMessage(this.user.id).then(messages => this.messages = messages);
   }

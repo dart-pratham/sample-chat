@@ -13,7 +13,6 @@ var core_1 = require('@angular/core');
 var login_component_1 = require('./login.component');
 var all_message_room_component_1 = require('./all-message-room.component');
 var task_component_1 = require('./task.component');
-//import { ChatroomComponent } from './chatroom.component';
 var routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'chat', component: all_message_room_component_1.AllMessageRoom },

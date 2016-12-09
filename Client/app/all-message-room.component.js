@@ -15,9 +15,10 @@ var AllMessageRoom = (function () {
     }
     AllMessageRoom = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'all-message-room',
-            template: "\n  <h1>{{title}}</h1>\n  <div>\n  <div id=\"chatbox\">\n  <all-message-list><all-message-list>\n  </div>\n  <post-from><post-form>\n  </div>\n  ",
-            styles: ["\n    #chatbox{\n    height: 250px;\n    width: 500px;\n    background-color: grey;\n    overflow: scroll;\n    }\n    "]
+            template: "\n  <h1>{{title}}</h1>\n  <div id=\"chatbox\">\n  <all-message-list></all-message-list>\n  </div>\n  <br><br>\n  <div>\n  <post-form></post-form>\n  </div>\n  ",
+            styles: ["\n    h1,div {\n    margin-left: 25%;\n    }\n    #chatbox{\n    height: 250px;\n    width: 500px;\n    background-color: grey;\n    overflow: scroll;\n    }\n    "]
         }), 
         __metadata('design:paramtypes', [])
     ], AllMessageRoom);

@@ -31,7 +31,7 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, app_routing_1.AppRoutingModule, http_1.HttpModule],
-            declarations: [app_component_1.AppComponent, chatroom_component_1.AllMessageListComponent, chatroom_component_1.UserMessageListComponent, login_component_1.LoginComponent, messagecomponent_1.MessageComponent, messagelist_component_1.MessageListComponent, task_component_1.TaskComponent, all_message_room_component_1.AllMessageRoom, post_component_1.PostComponent],
+            declarations: [app_component_1.AppComponent, all_message_room_component_1.AllMessageRoom, chatroom_component_1.AllMessageListComponent, login_component_1.LoginComponent, messagecomponent_1.MessageComponent, messagelist_component_1.MessageListComponent, task_component_1.TaskComponent, post_component_1.PostComponent],
             providers: [message_service_1.MessageService, login_service_1.LoginService, sync_service_1.SyncService, task_service_1.TaskService],
             bootstrap: [app_component_1.AppComponent]
         }), 

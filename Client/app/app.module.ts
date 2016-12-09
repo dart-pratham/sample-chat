@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent }  from './app.component';
-import { AllMessageListComponent, UserMessageListComponent } from './chatroom.component';
+import { AllMessageListComponent} from './chatroom.component';
 import { AllMessageRoom } from './all-message-room.component';
 import { MessageComponent } from './messagecomponent';
 import { MessageListComponent } from './messagelist.component';
@@ -21,7 +21,7 @@ import { TaskService } from './task.service';
 
 @NgModule({
   imports:      [ BrowserModule,FormsModule,AppRoutingModule,HttpModule ],
-  declarations: [ AppComponent, AllMessageListComponent,UserMessageListComponent,LoginComponent, MessageComponent, MessageListComponent, TaskComponent, AllMessageRoom, PostComponent]
+  declarations: [ AppComponent, AllMessageRoom,AllMessageListComponent,LoginComponent, MessageComponent, MessageListComponent, TaskComponent, PostComponent],
   providers:    [ MessageService,LoginService,SyncService,TaskService ],
   bootstrap:    [ AppComponent ]
 })
