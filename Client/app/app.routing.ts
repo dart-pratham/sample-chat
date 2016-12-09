@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { LoginComponent} from './login.component';
 import { ChatroomComponent } from './chatroom.component';
+import { FilterRoomComponent } from './Filterroom.component';
 
 const routes : Routes = [
   { path:'',redirectTo:'login',pathMatch:'full'},
-  { path:'chat',component: ChatroomComponent },
-  { path: 'login',component: LoginComponent }
+  { path: 'chat',component: ChatroomComponent },
+  { path: 'login',component: LoginComponent },
+  { path: 'filter',component: FilterRoomComponent }
 ];
 
 @NgModule({
