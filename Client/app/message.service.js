@@ -9,15 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-require('rxjs/add/operator/toPromise');
 var sync_service_1 = require('./sync.service');
 var MessageService = (function () {
-    function MessageService(http, sync) {
-        this.http = http;
+    function MessageService(sync) {
         this.sync = sync;
-        this.ChatUrl = 'http://192.168.2.184:8000/chat/';
-        this.PostUrl = 'http://192.168.2.184:8000/post/';
+        this.ChatUrl = 'http://127.0.0.1:8000/chat/';
+        this.PostUrl = 'http://127.0.0.1:8000/post/';
+        this.filterUrl = 'http://192.168.2.184:8000';
     }
     MessageService.prototype.getMessage = function () {
         return this.sync.getRequest(this.ChatUrl).then(function (res) {
@@ -34,9 +32,15 @@ var MessageService = (function () {
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
+    MessageService.prototype.getUserMessage = function (userId) {
+        return this.sync.getRequest(this.filterUrl + "/user/" + userId).then(function (res) {
+            return res.json();
+        })
+            .catch(this.handleError);
+    };
     MessageService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http, sync_service_1.SyncService])
+        __metadata('design:paramtypes', [sync_service_1.SyncService])
     ], MessageService);
     return MessageService;
 }());

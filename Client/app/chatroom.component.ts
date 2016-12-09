@@ -1,34 +1,27 @@
-import { Component }         from '@angular/core';
+import { Component, Input }         from '@angular/core';
 import { Message }           from './message';
-import { OnInit }            from '@angular/core';
+import { OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { MessageService }    from './message.service';
-import { AllMessages, FilterMessages, Mixin }   from './generic-message';
+import { User }              from './user';
 
-@Component({
-  moduleId: module.id,
-  selector: 'chat-room',
-  templateUrl: 'chatroom.component.html',
-  styleUrls: ['chatroom.component.css']
-})
-
-@Mixin([AllMessages, FilterMessages])
-export class ChatroomComponent implements OnInit, AllMessages, FilterMessages {
+export class ChatroomComponent implements OnInit, OnChanges, OnDestroy{
   title = "Chatroom";
   messages: Message[];
-  show: () => void;
-  filter: () => void;
-
-  constructor(private messageService: MessageService) {}
-
+  
+  constructor(public messageService: MessageService) {}
   private ws : WebSocket;
 
   getMessage(): void {
-    this.messageService.getMessage().then(messages => this.messages = messages);
+    //this.messageService.getMessage().then(messages => this.messages = messages);
+  }
+
+  ngOnChanges(): void {
+    this.getMessage();
   }
 
   ngOnInit(): void {
 
-    this.ws = new WebSocket("ws://192.168.2.184:8000/ws/chatchannel?subscribe-broadcast");
+    this.ws = new WebSocket("ws://127.0.0.1:8000/ws/chatchannel?subscribe-broadcast");
     this.ws.onmessage = (event) => {
       console.log("received " + event.data);
       this.getMessage();
@@ -41,15 +34,42 @@ export class ChatroomComponent implements OnInit, AllMessages, FilterMessages {
     };
   }
 
-
   updateChat(): void {
     console.log(this);
     this.getMessage();
   };
+}
+@Component({
+  moduleId: module.id,
+  selector: 'all-message-list',
+  template: `
+  <message-list [messages]="messages"></message-list>
+  `
+})
 
-  send(body: string): void {
-    body = body.trim();
-    if(!body) {return;}
-    this.messageService.add(body).then(msg => this.updateChat());
+export class AllMessageListComponent extends ChatroomComponent {
+
+  getMessage(): void {
+    this.messageService.getMessage().then(messages => this.messages = messages);
   }
 }
+
+@Component({
+  moduleId: module.id,
+  selector: 'user-message-list',
+  template: `
+  <message-list [messages]="messages"></message-list>
+  `
+})
+
+export class UserMessageListComponent extends ChatroomComponent {
+
+  @Input()
+  user: any;
+
+  getMessage(): void {
+    this.messageService.getUserMessage(this.user.id).then(messages => this.messages = messages);
+  }
+}
+  
+

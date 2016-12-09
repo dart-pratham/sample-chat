@@ -12,12 +12,10 @@ var router_1 = require('@angular/router');
 var core_1 = require('@angular/core');
 var login_component_1 = require('./login.component');
 var chatroom_component_1 = require('./chatroom.component');
-var filterroom_component_1 = require('./filterroom.component');
 var routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'chat', component: chatroom_component_1.ChatroomComponent },
     { path: 'login', component: login_component_1.LoginComponent },
-    { path: 'filterroom', component: filterroom_component_1.FilterroomComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
