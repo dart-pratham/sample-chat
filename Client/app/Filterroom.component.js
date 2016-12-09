@@ -24,7 +24,7 @@ __decorate([
 FilterRoomComponent = __decorate([
     core_1.Component({
         selector: 'filter-room',
-        template: "\n    <div id = \"user-dropdown\" >\n      <user-list [users] = \"users\" (onSelected) = \"onSelect($event)\" ></user-list>\n    </div>\n    <div id = \"user-msg-list\" >\n      <user-message-list [user] = \"chat_user\"></user-message-list>\n    </div>\n  "
+        template: "\n    <div id = \"user-dropdown\" >\n      <user-list [users] = \"users\" (onSelected) = \"onSelect($event)\" ></user-list>\n    </div>\n    <div id = \"user-msg-list\"  *ngIf = \"chat_user\">\n      <user-message-list [user] = \"chat_user\"></user-message-list>\n    </div>\n  "
     }),
     __metadata("design:paramtypes", [])
 ], FilterRoomComponent);

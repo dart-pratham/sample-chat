@@ -1,4 +1,4 @@
-import { Component,OnInit,Output } from '@angular/core';
+import { Component,OnInit,Output,EventEmitter,Input } from '@angular/core';
 import { User } from './user';
 import { UserListService } from './user-list.service';
 
@@ -6,16 +6,17 @@ import { UserListService } from './user-list.service';
   selector: 'user-list',
   template: `
     <ul *ngIf = "users">
-      <user *ngFor= "let user of users" [user]= "user" (click) = "onSelect(user);"></user>
+      <ur *ngFor= "let user of users" [user]= "user" (click) = "onSelect(user);"></ur>
     </ul>
   `,
   providers: [ UserListService ]
 })
 
 export class UserListComponent implements OnInit {
+  @Input()
+  users: User[];
   @Output() onSelected = new EventEmitter<User>();
   selectedUser: User;
-  users: User[];
   constructor(private userListService:UserListService){}
 
   ngOnInit():void {

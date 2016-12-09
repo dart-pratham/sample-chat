@@ -3,9 +3,9 @@ import { Component,Input } from '@angular/core';
 import { User } from './user';
 
 @Component({
-  selector: 'user',
+  selector: 'ur',
   template: `
-    <li *ngIf= [user]>{{user.username}}></li>
+    <li *ngIf= "user">{{user.username}}></li>
   `
 })
 

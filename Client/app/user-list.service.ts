@@ -5,11 +5,12 @@ import 'rxjs/add/operator/toPromise';
 import { SyncService } from './sync.service';
 
 import { User } from './user';
+import { IP } from './ip.address';
 
 @Injectable()
 export class UserListService {
 
-  private getUsersUrl = 'http://192.168.2.184:8000/filter/'
+  private getUsersUrl = 'http://'+IP+'/filter/';
 
   constructor(private syncService:SyncService) { }
 

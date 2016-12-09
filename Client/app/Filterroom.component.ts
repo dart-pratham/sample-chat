@@ -8,7 +8,7 @@ import { User } from './user';
     <div id = "user-dropdown" >
       <user-list [users] = "users" (onSelected) = "onSelect($event)" ></user-list>
     </div>
-    <div id = "user-msg-list" >
+    <div id = "user-msg-list"  *ngIf = "chat_user">
       <user-message-list [user] = "chat_user"></user-message-list>
     </div>
   `
