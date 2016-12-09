@@ -7,12 +7,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('task', '0003_auto_20161207_1552'),
+        ('task', '0014_notification'),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='message',
-            name='ready_to_fire',
+        migrations.RenameField(
+            model_name='notification',
+            old_name='confirm',
+            new_name='approve',
         ),
     ]

@@ -9,42 +9,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
 var sync_service_1 = require('./sync.service');
 var ip_address_1 = require('./ip.address');
-var MessageService = (function () {
-    function MessageService(sync) {
+var TaskService = (function () {
+    function TaskService(http, sync) {
+        this.http = http;
         this.sync = sync;
-        this.ChatUrl = 'http://' + ip_address_1.IP + '/chat/';
-        this.PostUrl = 'http://' + ip_address_1.IP + '/post/';
-        this.filterUrl = 'http://192.168.2.184:8000';
+        this.TaskUrl = 'http://' + ip_address_1.IP + '/get-notif/';
+        this.TaskPostUrl = 'http://' + ip_address_1.IP + '/get-notif/';
     }
-    MessageService.prototype.getMessage = function () {
-        return this.sync.getRequest(this.ChatUrl).then(function (res) {
-            console.log(res.json());
+    TaskService.prototype.getTask = function () {
+        return this.sync.getRequest(this.TaskUrl).then(function (res) {
             return res.json();
         });
     };
-    MessageService.prototype.handleError = function (error) {
+    TaskService.prototype.handleError = function (error) {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
     };
-    MessageService.prototype.add = function (task, time_of_fire) {
-        var time = new Date(time_of_fire);
-        return this.sync.postRequest(this.PostUrl, { text: task, time_to_fire: time })
+    TaskService.prototype.check = function (id) {
+        return this.sync.postRequest(this.TaskPostUrl, { id: id })
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    MessageService.prototype.getUserMessage = function (userId) {
-        return this.sync.getRequest(this.filterUrl + "/user/" + userId).then(function (res) {
-            return res.json();
-        })
-            .catch(this.handleError);
-    };
-    MessageService = __decorate([
+    TaskService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [sync_service_1.SyncService])
-    ], MessageService);
-    return MessageService;
+        __metadata('design:paramtypes', [http_1.Http, sync_service_1.SyncService])
+    ], TaskService);
+    return TaskService;
 }());
-exports.MessageService = MessageService;
-//# sourceMappingURL=message.service.js.map
+exports.TaskService = TaskService;
+//# sourceMappingURL=task.service.js.map

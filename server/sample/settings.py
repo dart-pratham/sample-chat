@@ -82,7 +82,6 @@ WSGI_APPLICATION = 'ws4redis.django_runserver.application'
 WEBSOCKET_URL = '/ws/'
 WS4REDIS_EXPIRE = 3600
 WS4REDIS_HEARTBEAT = '--heartbeat--'
-WS4REDIS_HEARTBEAT = '--heartbeat--'
 WS4REDIS_PREFIX = 'demo'
 CORS_ORIGIN_ALLOW_ALL=True
 

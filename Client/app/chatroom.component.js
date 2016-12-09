@@ -29,7 +29,6 @@ var ChatroomComponent = (function () {
         var _this = this;
         this.ws = new WebSocket("ws://127.0.0.1:8000/ws/chatchannel?subscribe-broadcast");
         this.ws.onmessage = function (event) {
-            console.log("received " + event.data);
             _this.getMessage();
         };
     };
@@ -41,7 +40,6 @@ var ChatroomComponent = (function () {
         };
     };
     ChatroomComponent.prototype.updateChat = function () {
-        console.log(this);
         this.getMessage();
     };
     ;

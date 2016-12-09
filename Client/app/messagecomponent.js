@@ -13,6 +13,8 @@ var message_1 = require('./message');
 var MessageComponent = (function () {
     function MessageComponent() {
     }
+    MessageComponent.prototype.ngOnInit = function () {
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', message_1.Message)
@@ -20,7 +22,7 @@ var MessageComponent = (function () {
     MessageComponent = __decorate([
         core_1.Component({
             selector: 'message-component',
-            template: "<div *ngIf = [msg]>\n  <ul>\n  <li>{{msg.text}}</li>\n  </ul>\n  </div>"
+            template: "<div *ngIf = [msg]>\n  <ul>\n  <li>{{msg.text}}  {{msg.time_to_fire}}</li>\n  </ul>\n  </div>"
         }), 
         __metadata('design:paramtypes', [])
     ], MessageComponent);

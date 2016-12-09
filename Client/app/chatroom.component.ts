@@ -23,7 +23,6 @@ export class ChatroomComponent implements OnInit, OnChanges, OnDestroy{
 
     this.ws = new WebSocket("ws://127.0.0.1:8000/ws/chatchannel?subscribe-broadcast");
     this.ws.onmessage = (event) => {
-      console.log("received " + event.data);
       this.getMessage();
     }
   }
@@ -35,7 +34,6 @@ export class ChatroomComponent implements OnInit, OnChanges, OnDestroy{
   }
 
   updateChat(): void {
-    console.log(this);
     this.getMessage();
   };
 }
@@ -71,5 +69,4 @@ export class UserMessageListComponent extends ChatroomComponent {
     this.messageService.getUserMessage(this.user.id).then(messages => this.messages = messages);
   }
 }
-  
 

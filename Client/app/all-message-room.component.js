@@ -9,18 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var AllMessageRoom = (function () {
+    function AllMessageRoom() {
+        this.title = "All Messages Room";
     }
-    AppComponent = __decorate([
+    AllMessageRoom = __decorate([
         core_1.Component({
-            moduleId: module.id,
-            selector: 'my-app',
-            template: "\n  <router-outlet></router-outlet>"
+            selector: 'all-message-room',
+            template: "\n  <h1>{{title}}</h1>\n  <div>\n  <div id=\"chatbox\">\n  <all-message-list><all-message-list>\n  </div>\n  <post-from><post-form>\n  </div>\n  ",
+            styles: ["\n    #chatbox{\n    height: 250px;\n    width: 500px;\n    background-color: grey;\n    overflow: scroll;\n    }\n    "]
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], AllMessageRoom);
+    return AllMessageRoom;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.AllMessageRoom = AllMessageRoom;
+//# sourceMappingURL=all-message-room.component.js.map
