@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   selector:'all-message-room',
   template:`
   <h1>{{title}}</h1>
+  <a routerLink = "/filter">Filter Room</a>
   <div id="chatbox">
   <all-message-list></all-message-list>
   </div>

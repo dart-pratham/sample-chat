@@ -30,9 +30,9 @@ export class MessageService {
     .catch(this.handleError);
   }
 
-  private filterUrl = 'http://192.168.2.184:8000';
+  private filterUrl = 'http://'+IP+'/filter/';
   getUserMessage(userId: number): Promise<Message[]> {
-    return this.sync.getRequest(this.filterUrl + "/user/" + userId).then(function(res){
+    return this.sync.getRequest(this.filterUrl + "user/" + userId + '/').then(function(res){
       return (res.json() as Message[]);
     })
     .catch(this.handleError);

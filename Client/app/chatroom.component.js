@@ -15,6 +15,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var message_service_1 = require('./message.service');
+var user_1 = require('./user');
 var ip_address_1 = require('./ip.address');
 var ChatroomComponent = (function () {
     function ChatroomComponent(messageService) {
@@ -51,7 +52,7 @@ var ChatroomComponent = (function () {
 var AllMessageListComponent = (function (_super) {
     __extends(AllMessageListComponent, _super);
     function AllMessageListComponent(messageService) {
-        this.messageService = messageService;
+        _super.call(this, messageService);
     }
     AllMessageListComponent.prototype.getMessage = function () {
         var _this = this;
@@ -71,15 +72,16 @@ exports.AllMessageListComponent = AllMessageListComponent;
 var UserMessageListComponent = (function (_super) {
     __extends(UserMessageListComponent, _super);
     function UserMessageListComponent(messageService) {
-        this.messageService = messageService;
+        _super.call(this, messageService);
     }
     UserMessageListComponent.prototype.getMessage = function () {
         var _this = this;
+        console.log(this);
         this.messageService.getUserMessage(this.user.id).then(function (messages) { return _this.messages = messages; });
     };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', Object)
+        __metadata('design:type', user_1.User)
     ], UserMessageListComponent.prototype, "user", void 0);
     UserMessageListComponent = __decorate([
         core_1.Component({

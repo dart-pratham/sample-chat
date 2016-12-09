@@ -20,19 +20,24 @@ var messagelist_component_1 = require('./messagelist.component');
 var login_component_1 = require('./login.component');
 var task_component_1 = require('./task.component');
 var post_component_1 = require('./post.component');
+var Filterroom_component_1 = require('./Filterroom.component');
+var user_component_1 = require('./user.component');
+var user_list_component_1 = require('./user-list.component');
+var chatroom_component_2 = require('./chatroom.component');
 var app_routing_1 = require('./app.routing');
 var message_service_1 = require('./message.service');
 var login_service_1 = require('./login.service');
 var sync_service_1 = require('./sync.service');
 var task_service_1 = require('./task.service');
+var user_list_service_1 = require('./user-list.service');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, app_routing_1.AppRoutingModule, http_1.HttpModule],
-            declarations: [app_component_1.AppComponent, all_message_room_component_1.AllMessageRoom, chatroom_component_1.AllMessageListComponent, login_component_1.LoginComponent, messagecomponent_1.MessageComponent, messagelist_component_1.MessageListComponent, task_component_1.TaskComponent, post_component_1.PostComponent],
-            providers: [message_service_1.MessageService, login_service_1.LoginService, sync_service_1.SyncService, task_service_1.TaskService],
+            declarations: [app_component_1.AppComponent, all_message_room_component_1.AllMessageRoom, chatroom_component_1.AllMessageListComponent, login_component_1.LoginComponent, Filterroom_component_1.FilterRoomComponent, messagecomponent_1.MessageComponent, messagelist_component_1.MessageListComponent, task_component_1.TaskComponent, post_component_1.PostComponent, user_component_1.UserComponent, user_list_component_1.UserListComponent, chatroom_component_2.UserMessageListComponent],
+            providers: [message_service_1.MessageService, login_service_1.LoginService, sync_service_1.SyncService, task_service_1.TaskService, user_list_service_1.UserListService],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

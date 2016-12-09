@@ -9,21 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var MessageListComponent = (function () {
-    function MessageListComponent() {
+var user_1 = require('./user');
+var UserComponent = (function () {
+    function UserComponent() {
     }
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', Array)
-    ], MessageListComponent.prototype, "messages", void 0);
-    MessageListComponent = __decorate([
+        __metadata('design:type', user_1.User)
+    ], UserComponent.prototype, "user", void 0);
+    UserComponent = __decorate([
         core_1.Component({
-            selector: 'message-list',
-            template: "\n  <div *ngIf = \"messages\">\n  <message-component *ngFor= \"let message of messages\" [msg]=\"message\"></message-component>\n  </div>\n  "
+            selector: 'ur',
+            template: "\n    <li *ngIf= \"user\">{{user.username}}></li>\n  "
         }), 
         __metadata('design:paramtypes', [])
-    ], MessageListComponent);
-    return MessageListComponent;
+    ], UserComponent);
+    return UserComponent;
 }());
-exports.MessageListComponent = MessageListComponent;
-//# sourceMappingURL=messagelist.component.js.map
+exports.UserComponent = UserComponent;
+//# sourceMappingURL=user.component.js.map

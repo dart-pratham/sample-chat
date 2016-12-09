@@ -9,21 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var MessageListComponent = (function () {
-    function MessageListComponent() {
+var FilterRoomComponent = (function () {
+    function FilterRoomComponent() {
     }
+    FilterRoomComponent.prototype.onSelect = function (usr) {
+        this.chat_user = usr;
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)
-    ], MessageListComponent.prototype, "messages", void 0);
-    MessageListComponent = __decorate([
+    ], FilterRoomComponent.prototype, "users", void 0);
+    FilterRoomComponent = __decorate([
         core_1.Component({
-            selector: 'message-list',
-            template: "\n  <div *ngIf = \"messages\">\n  <message-component *ngFor= \"let message of messages\" [msg]=\"message\"></message-component>\n  </div>\n  "
+            selector: 'filter-room',
+            template: "\n    <div id = \"user-dropdown\" >\n      <user-list [users] = \"users\" (onSelected) = \"onSelect($event)\" ></user-list>\n    </div>\n    <div id = \"user-msg-list\"  *ngIf = \"chat_user\">\n      <user-message-list [user] = \"chat_user\"></user-message-list>\n    </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
-    ], MessageListComponent);
-    return MessageListComponent;
+    ], FilterRoomComponent);
+    return FilterRoomComponent;
 }());
-exports.MessageListComponent = MessageListComponent;
-//# sourceMappingURL=messagelist.component.js.map
+exports.FilterRoomComponent = FilterRoomComponent;
+//# sourceMappingURL=Filterroom.component.js.map

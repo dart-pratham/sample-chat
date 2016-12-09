@@ -4,7 +4,7 @@ import { Message } from './message';
 @Component({
   selector: 'message-list',
   template: `
-  <div *ngIf=[messages]>
+  <div *ngIf = "messages">
   <message-component *ngFor= "let message of messages" [msg]="message"></message-component>
   </div>
   `

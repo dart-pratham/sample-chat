@@ -11,6 +11,10 @@ import { MessageListComponent } from './messagelist.component';
 import { LoginComponent } from './login.component';
 import { TaskComponent } from './task.component';
 import { PostComponent } from './post.component';
+import { FilterRoomComponent } from './Filterroom.component';
+import { UserComponent } from './user.component';
+import { UserListComponent } from './user-list.component';
+import { UserMessageListComponent } from './chatroom.component';
 
 import { AppRoutingModule } from './app.routing';
 
@@ -18,11 +22,12 @@ import { MessageService } from './message.service';
 import { LoginService } from './login.service';
 import { SyncService } from './sync.service';
 import { TaskService } from './task.service';
+import { UserListService } from './user-list.service';
 
 @NgModule({
   imports:      [ BrowserModule,FormsModule,AppRoutingModule,HttpModule ],
-  declarations: [ AppComponent, AllMessageRoom,AllMessageListComponent,LoginComponent, MessageComponent, MessageListComponent, TaskComponent, PostComponent],
-  providers:    [ MessageService,LoginService,SyncService,TaskService ],
+  declarations: [ AppComponent, AllMessageRoom,AllMessageListComponent,LoginComponent, FilterRoomComponent, MessageComponent, MessageListComponent, TaskComponent, PostComponent,UserComponent, UserListComponent,UserMessageListComponent],
+  providers:    [ MessageService,LoginService,SyncService,TaskService,UserListService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule {}

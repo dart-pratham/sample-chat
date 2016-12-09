@@ -16,7 +16,7 @@ var MessageService = (function () {
         this.sync = sync;
         this.ChatUrl = 'http://' + ip_address_1.IP + '/chat/';
         this.PostUrl = 'http://' + ip_address_1.IP + '/post/';
-        this.filterUrl = 'http://192.168.2.184:8000';
+        this.filterUrl = 'http://' + ip_address_1.IP + '/filter/';
     }
     MessageService.prototype.getMessage = function () {
         return this.sync.getRequest(this.ChatUrl).then(function (res) {
@@ -35,7 +35,7 @@ var MessageService = (function () {
             .catch(this.handleError);
     };
     MessageService.prototype.getUserMessage = function (userId) {
-        return this.sync.getRequest(this.filterUrl + "/user/" + userId).then(function (res) {
+        return this.sync.getRequest(this.filterUrl + "user/" + userId + '/').then(function (res) {
             return res.json();
         })
             .catch(this.handleError);

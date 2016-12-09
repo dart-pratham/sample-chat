@@ -50,7 +50,9 @@ class ChatroomComponent implements OnInit, OnChanges, OnDestroy{
 
 export class AllMessageListComponent extends ChatroomComponent {
 
-  constructor(private messageService: MessageService) {}
+  constructor( messageService: MessageService) {
+    super(messageService);
+  }
   getMessage(): void {
     this.messageService.getMessage().then(messages => this.messages = messages);
   }
@@ -67,11 +69,13 @@ export class AllMessageListComponent extends ChatroomComponent {
 export class UserMessageListComponent extends ChatroomComponent {
 
   @Input()
-  user: any;
+  user: User;
 
-  constructor(private messageService: MessageService) {}
+  constructor( messageService: MessageService) {
+    super(messageService);
+  }
   getMessage(): void {
+    console.log(this);
     this.messageService.getUserMessage(this.user.id).then(messages => this.messages = messages);
   }
 }
-
