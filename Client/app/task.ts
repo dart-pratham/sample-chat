@@ -1,6 +1,5 @@
 export class Task{
-  text: string;
+  message: string;
   id: number;
-  time_to_fire: string;
   approve: boolean;
 }

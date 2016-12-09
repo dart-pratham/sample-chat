@@ -3,9 +3,11 @@
   <message-list [messages]="messages"></message-list>
 </div>
 <div>
+  <!--<post-form></post-form>-->
     <label>Your msg:</label>
     <input #messageBody placeholder="Your message">
     <input type = "datetime-local" #timeOfFire >
     <button (click)="send(messageBody.value,timeOfFire.value); messageBody.value='';">Send</button>
 </div>
   <a routerLink= "/task">Notification Page</a>
+  <router-outlet></router-outlet>

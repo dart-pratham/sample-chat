@@ -11,12 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var sync_service_1 = require('./sync.service');
+var ip_address_1 = require('./ip.address');
 var TaskService = (function () {
     function TaskService(http, sync) {
         this.http = http;
         this.sync = sync;
-        this.TaskUrl = 'URL';
-        this.TaskPostUrl = 'URL';
+        this.TaskUrl = 'http://' + ip_address_1.IP + '/get-notif/';
+        this.TaskPostUrl = 'http://' + ip_address_1.IP + '/get-notif/';
     }
     TaskService.prototype.getTask = function () {
         return this.sync.getRequest(this.TaskUrl).then(function (res) {

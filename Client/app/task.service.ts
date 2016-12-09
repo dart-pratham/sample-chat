@@ -3,12 +3,12 @@ import { Headers, Http } from '@angular/http';
 
 import { Task } from './task';
 import { SyncService } from './sync.service';
+import { IP } from './ip.address';
 
 @Injectable()
 export class TaskService {
-  task: Task;
 
-  private TaskUrl = 'URL';
+  private TaskUrl = 'http://'+IP+'/get-notif/';
   constructor (private http:Http, private sync:SyncService ){}
 
   getTask(): Promise<Task[]> {
@@ -21,9 +21,9 @@ export class TaskService {
     return Promise.reject(error.message || error);
   }
 
-  private TaskPostUrl = 'URL';
+  private TaskPostUrl = 'http://'+IP+'/get-notif/';
 
-  check(id: number): Promise<Task>{
+  check(id: number): Promise<number>{
     return this.sync.postRequest(this.TaskPostUrl, {id:id} )
     .then(res => res.json())
     .catch(this.handleError);

@@ -4,10 +4,12 @@ import { Headers, Http  } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Message } from './message';
 import { SyncService } from './sync.service';
+import { IP } from './ip.address';
+
 @Injectable()
 
 export class MessageService {
-  private ChatUrl = 'http://192.168.2.115:8000/chat/';
+  private ChatUrl = 'http://'+IP+'/chat/';
   constructor (private http:Http,
                private sync:SyncService) {}
 
@@ -23,7 +25,7 @@ export class MessageService {
     return Promise.reject(error.message || error);
   }
 
-  private PostUrl = 'http://192.168.2.115:8000/post/';
+  private PostUrl = 'http://'+IP+'/post/';
 
   add(task: string,time_of_fire: string): Promise<Message[]> {
     var time = new Date(time_of_fire);

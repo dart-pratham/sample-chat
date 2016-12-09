@@ -11,8 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var router_1 = require('@angular/router');
 var core_1 = require('@angular/core');
 var login_component_1 = require('./login.component');
-var chatroom_component_1 = require('./chatroom.component');
+//import { AllMessageRoom } from './all-message-room.component';
 var task_component_1 = require('./task.component');
+var chatroom_component_1 = require('./chatroom.component');
 var routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'chat', component: chatroom_component_1.ChatroomComponent },
@@ -22,14 +23,14 @@ var routes = [
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
     }
+    AppRoutingModule = __decorate([
+        core_1.NgModule({
+            imports: [router_1.RouterModule.forRoot(routes)],
+            exports: [router_1.RouterModule]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], AppRoutingModule);
     return AppRoutingModule;
 }());
-AppRoutingModule = __decorate([
-    core_1.NgModule({
-        imports: [router_1.RouterModule.forRoot(routes)],
-        exports: [router_1.RouterModule]
-    }),
-    __metadata("design:paramtypes", [])
-], AppRoutingModule);
 exports.AppRoutingModule = AppRoutingModule;
 //# sourceMappingURL=app.routing.js.map

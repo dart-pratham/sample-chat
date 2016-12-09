@@ -8,22 +8,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
+var core_1 = require('@angular/core');
 var MessageListComponent = (function () {
     function MessageListComponent() {
     }
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Array)
+    ], MessageListComponent.prototype, "messages", void 0);
+    MessageListComponent = __decorate([
+        core_1.Component({
+            selector: 'message-list',
+            template: "\n  <div *ngIf=[messages]>\n  <message-component *ngFor= \"let message of messages\" [msg]=\"message\"></message-component>\n  </div>\n  "
+        }), 
+        __metadata('design:paramtypes', [])
+    ], MessageListComponent);
     return MessageListComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Array)
-], MessageListComponent.prototype, "messages", void 0);
-MessageListComponent = __decorate([
-    core_1.Component({
-        selector: 'message-list',
-        template: "\n  <div *ngIf=[messages]>\n  <message-component *ngFor= \"let message of messages\" [msg]=\"message\"></message-component>\n  </div>\n  "
-    }),
-    __metadata("design:paramtypes", [])
-], MessageListComponent);
 exports.MessageListComponent = MessageListComponent;
 //# sourceMappingURL=messagelist.component.js.map

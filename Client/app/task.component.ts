@@ -1,15 +1,28 @@
 import { Component, OnInit } from '@angular/core'
 import { Task } from './task';
 import { TaskService } from './task.service';
+import { IP } from './ip.address';
 
 @Component({
   moduleId: module.id,
   selector: 'task',
-  templateUrl:'task.component.html'
+  styles:[`
+    .change{
+    color:yellow;
+    }
+    h1{
+    margin-left:25%;
+    }
+    div{
+    left-margin:25%;
+    border: 2px;
+    }
+    `],
+    templateUrl:'task.component.html'
 })
 
 export class TaskComponent implements OnInit{
-  title: "List of notifications";
+  title = "List of notifications";
   tasks: Task[];
   flag:boolean;
   val:string;
@@ -23,28 +36,14 @@ export class TaskComponent implements OnInit{
   }
 
   ngOnInit(): void{
-    this.ws = new WebSocket("URL");
+    this.ws = new WebSocket("ws://" + IP + "/ws/notifychannel?subdcribe-broadcast");
     this.ws.onmessage = (event) => {
       this.getTask();
     }
     this.flag = false;
   }
 
-  //updateTask(): void{
-  //this.getTask();
-  //}
-
   confirm(id: number): void{
-    this.taskService.check(id).then( msg => {
-      this.flag = msg.approve;
-      if(this.flag === true){
-        //this.updateTask());
-        this.val = 'Confirmed';
-        console.log("confirmed");
-      }
-      else{
-        this.val = 'Not Confirmed';
-      }
-    })
+    this.taskService.check(id).then( msg => {})
   }
 }
