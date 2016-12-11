@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-require("rxjs/add/operator/toPromise");
-var sync_service_1 = require("./sync.service");
-var ip_address_1 = require("./ip.address");
+var core_1 = require('@angular/core');
+require('rxjs/add/operator/toPromise');
+var sync_service_1 = require('./sync.service');
+var ip_address_1 = require('./ip.address');
 var UserListService = (function () {
     function UserListService(syncService) {
         this.syncService = syncService;
@@ -23,11 +23,11 @@ var UserListService = (function () {
             return res.json();
         });
     };
+    UserListService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [sync_service_1.SyncService])
+    ], UserListService);
     return UserListService;
 }());
-UserListService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [sync_service_1.SyncService])
-], UserListService);
 exports.UserListService = UserListService;
 //# sourceMappingURL=user-list.service.js.map
