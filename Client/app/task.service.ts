@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
 
 import { Task } from './task';
 import { SyncService } from './sync.service';
@@ -9,12 +8,12 @@ import { IP } from './ip.address';
 export class TaskService {
 
   private TaskUrl = 'http://'+IP+'/get-notif/';
-  constructor (private http:Http, private sync:SyncService ){}
+  constructor (private sync:SyncService ){}
 
   getTask(): Promise<Task[]> {
     return this.sync.getRequest(this.TaskUrl).then(function(res){
       return (res.json() as Task[]);
-    })
+    });
   }
   private handleError(error: any): Promise<any> {
     console.error('An error occurred',error);
