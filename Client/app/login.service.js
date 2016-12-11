@@ -14,7 +14,11 @@ var ip_address_1 = require('./ip.address');
 var LoginService = (function () {
     function LoginService(http) {
         this.http = http;
+<<<<<<< HEAD
+        this.loginUrl = "http://192.168.2.115:8000/get-token/";
+=======
         this.loginUrl = "http://" + ip_address_1.IP + "/get-token/";
+>>>>>>> 877b344600edfcff304ddefbc2fb064e038d33db
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     LoginService.prototype.login = function (username, password) {
