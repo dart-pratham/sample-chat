@@ -15,7 +15,7 @@ var TaskService = (function () {
     function TaskService(sync) {
         this.sync = sync;
         this.TaskUrl = 'http://' + ip_address_1.IP + '/get-notif/';
-        this.TaskPostUrl = 'http://' + ip_address_1.IP + '/get-notif/';
+        this.TaskPostUrl = 'http://' + ip_address_1.IP + '/confirm-notif/';
     }
     TaskService.prototype.getTask = function () {
         return this.sync.getRequest(this.TaskUrl).then(function (res) {
