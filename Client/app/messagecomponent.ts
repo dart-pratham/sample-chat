@@ -9,7 +9,9 @@ import { Message } from './message';
   </ul>
   </div>`
 })
-export class MessageComponent {
+export class MessageComponent implements OnInit{
   @Input()
   msg: Message;
+  ngOnInit(): void {
+  }
 }

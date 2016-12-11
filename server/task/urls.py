@@ -5,6 +5,7 @@ from task.views import MessageShowView , MessageCreateView, UserFilterView, Filt
 app_name = 'task'
 
 urlpatterns=[
+
     url(r'^get-token/$', views.obtain_auth_token , name='get_token'),
     url(r'^chat/$', MessageShowView.as_view() , name='showAllMessage'),
     url(r'^post/$' , MessageCreateView.as_view() , name='postMessage'),
