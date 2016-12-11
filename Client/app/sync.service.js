@@ -8,30 +8,40 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-require('rxjs/add/operator/toPromise');
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+var router_1 = require("@angular/router");
+require("rxjs/add/operator/toPromise");
 var SyncService = (function () {
-    function SyncService(http) {
+    function SyncService(http, router) {
         this.http = http;
+        this.router = router;
     }
     SyncService.prototype.getRequest = function (req) {
         var token = localStorage.getItem("token");
         var header = new http_1.Headers({ 'Authorization': 'token ' + token });
-        return this.http.get(req, { headers: header }).toPromise();
+        return this.http.get(req, { headers: header }).toPromise().then(function (response) {
+            if (response.status === 401) {
+                this.router.navigate(['/login']);
+            }
+        });
     };
     SyncService.prototype.postRequest = function (req, data) {
         var token = localStorage.getItem("token");
         var header = new http_1.Headers();
         header.append("Content-Type", "application/json");
         header.append("Authorization", "token " + token);
-        return this.http.post(req, JSON.stringify(data), { headers: header }).toPromise();
+        return this.http.post(req, JSON.stringify(data), { headers: header }).toPromise().then(function (response) {
+            if (response.status === 401) {
+                this.router.navigate(['/login']);
+            }
+        });
     };
-    SyncService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], SyncService);
     return SyncService;
 }());
+SyncService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http, router_1.Router])
+], SyncService);
 exports.SyncService = SyncService;
 //# sourceMappingURL=sync.service.js.map

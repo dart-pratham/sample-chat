@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var user_list_service_1 = require('./user-list.service');
+var core_1 = require("@angular/core");
+var user_list_service_1 = require("./user-list.service");
 var UserListComponent = (function () {
     function UserListComponent(userListService) {
         this.userListService = userListService;
@@ -26,23 +26,23 @@ var UserListComponent = (function () {
         this.selectedUser = usr;
         this.onSelected.emit(usr);
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Array)
-    ], UserListComponent.prototype, "users", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', Object)
-    ], UserListComponent.prototype, "onSelected", void 0);
-    UserListComponent = __decorate([
-        core_1.Component({
-            selector: 'user-list',
-            template: "\n    <ul *ngIf = \"users\">\n      <ur *ngFor= \"let user of users\" [user]= \"user\" (click) = \"onSelect(user);\"></ur>\n    </ul>\n  ",
-            providers: [user_list_service_1.UserListService]
-        }), 
-        __metadata('design:paramtypes', [user_list_service_1.UserListService])
-    ], UserListComponent);
     return UserListComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Array)
+], UserListComponent.prototype, "users", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], UserListComponent.prototype, "onSelected", void 0);
+UserListComponent = __decorate([
+    core_1.Component({
+        selector: 'user-list',
+        template: "\n    <ul *ngIf = \"users\">\n      <ur *ngFor= \"let user of users\" [user]= \"user\" (click) = \"onSelect(user);\"></ur>\n    </ul>\n  ",
+        providers: [user_list_service_1.UserListService]
+    }),
+    __metadata("design:paramtypes", [user_list_service_1.UserListService])
+], UserListComponent);
 exports.UserListComponent = UserListComponent;
 //# sourceMappingURL=user-list.component.js.map
