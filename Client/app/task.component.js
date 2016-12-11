@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var task_service_1 = require("./task.service");
-var ip_address_1 = require("./ip.address");
+var core_1 = require('@angular/core');
+var task_service_1 = require('./task.service');
+var ip_address_1 = require('./ip.address');
 var TaskComponent = (function () {
     function TaskComponent(taskService) {
         this.taskService = taskService;
@@ -32,16 +32,16 @@ var TaskComponent = (function () {
     TaskComponent.prototype.confirm = function (id) {
         this.taskService.check(id).then(function (msg) { });
     };
+    TaskComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'task',
+            styles: ["\n    .change{\n    color:yellow;\n    }\n    h1{\n    margin-left:25%;\n    }\n    div{\n    left-margin:25%;\n    border: 2px;\n    }\n    "],
+            templateUrl: 'task.component.html'
+        }), 
+        __metadata('design:paramtypes', [task_service_1.TaskService])
+    ], TaskComponent);
     return TaskComponent;
 }());
-TaskComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        selector: 'task',
-        styles: ["\n    .change{\n    color:yellow;\n    }\n    h1{\n    margin-left:25%;\n    }\n    div{\n    left-margin:25%;\n    border: 2px;\n    }\n    "],
-        templateUrl: 'task.component.html'
-    }),
-    __metadata("design:paramtypes", [task_service_1.TaskService])
-], TaskComponent);
 exports.TaskComponent = TaskComponent;
 //# sourceMappingURL=task.component.js.map
