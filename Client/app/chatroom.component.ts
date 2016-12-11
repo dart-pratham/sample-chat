@@ -25,6 +25,7 @@ class ChatroomComponent implements OnInit, OnChanges, OnDestroy{
     console.log(this);
     this.ws = new WebSocket("ws://"+ IP + "/ws/chatchannel?subscribe-broadcast");
     this.ws.onmessage = (event) => {
+console.log("chat websocket working", event.data);
       this.getMessage();
 
     }

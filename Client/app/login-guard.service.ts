@@ -11,7 +11,7 @@ export class LoginGuard implements CanActivate {
       this.router.navigate(['/chat']);
       return false;
     } else {
-      return true; 
+      return true;
     }
   }
 }

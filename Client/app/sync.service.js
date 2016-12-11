@@ -10,26 +10,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+var router_1 = require('@angular/router');
 require('rxjs/add/operator/toPromise');
 var SyncService = (function () {
-    function SyncService(http) {
+    function SyncService(http, router) {
         this.http = http;
+        this.router = router;
     }
     SyncService.prototype.getRequest = function (req) {
         var token = localStorage.getItem("token");
         var header = new http_1.Headers({ 'Authorization': 'token ' + token });
-        return this.http.get(req, { headers: header }).toPromise();
+        var x = this;
+        return this.http.get(req, { headers: header }).toPromise().catch(function (resp) {
+            console.log(resp, 1);
+            if (resp.status === 401) {
+                console.log('401 error');
+                localStorage.removeItem('token');
+                x.router.navigate(['/login']);
+            }
+            return resp;
+        });
     };
     SyncService.prototype.postRequest = function (req, data) {
         var token = localStorage.getItem("token");
         var header = new http_1.Headers();
         header.append("Content-Type", "application/json");
         header.append("Authorization", "token " + token);
-        return this.http.post(req, JSON.stringify(data), { headers: header }).toPromise();
+        var x = this;
+        return this.http.post(req, JSON.stringify(data), { headers: header }).toPromise().catch(function (resp) {
+            if (resp.status === 401) {
+                console.log('401 error');
+                localStorage.removeItem('token');
+                x.router.navigate(['/login']);
+            }
+            return resp;
+        });
     };
     SyncService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, router_1.Router])
     ], SyncService);
     return SyncService;
 }());
