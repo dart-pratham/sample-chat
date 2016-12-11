@@ -11,6 +11,7 @@ export class MessageService {
 
   getMessage(): Promise<Message[]> {
     return this.sync.getRequest(this.ChatUrl).then(function(res){
+      console.log(res);
       console.log(res.json());
       return (res.json() as Message[]);
     })

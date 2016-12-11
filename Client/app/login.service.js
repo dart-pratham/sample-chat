@@ -10,10 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+var ip_address_1 = require('./ip.address');
 var LoginService = (function () {
     function LoginService(http) {
         this.http = http;
-        this.loginUrl = "http://192.168.2.184:8000/get-token/";
+        this.loginUrl = "http://" + ip_address_1.IP + "/get-token/";
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     LoginService.prototype.login = function (username, password) {

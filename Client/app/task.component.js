@@ -22,6 +22,7 @@ var TaskComponent = (function () {
     };
     TaskComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.getTask();
         this.ws = new WebSocket("ws://" + ip_address_1.IP + "/ws/notifychannel?subscribe-broadcast");
         this.ws.onmessage = function (event) {
             _this.getTask();

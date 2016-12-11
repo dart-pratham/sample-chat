@@ -30,10 +30,10 @@ var ChatroomComponent = (function () {
     };
     ChatroomComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.getMessage();
         console.log(this);
         this.ws = new WebSocket("ws://" + ip_address_1.IP + "/ws/chatchannel?subscribe-broadcast");
         this.ws.onmessage = function (event) {
+            console.log("chat websocket working", event.data);
             _this.getMessage();
         };
     };
