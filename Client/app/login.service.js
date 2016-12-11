@@ -8,12 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+var ip_address_1 = require("./ip.address");
 var LoginService = (function () {
     function LoginService(http) {
         this.http = http;
+<<<<<<< HEAD
         this.loginUrl = "http://192.168.2.115:8000/get-token/";
+=======
+        this.loginUrl = "http://" + ip_address_1.IP + "/get-token/";
+>>>>>>> 877b344600edfcff304ddefbc2fb064e038d33db
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     LoginService.prototype.login = function (username, password) {
@@ -34,11 +39,11 @@ var LoginService = (function () {
         this.token = null;
         localStorage.clear();
     };
-    LoginService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], LoginService);
     return LoginService;
 }());
+LoginService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], LoginService);
 exports.LoginService = LoginService;
 //# sourceMappingURL=login.service.js.map

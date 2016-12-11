@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var sync_service_1 = require('./sync.service');
-var ip_address_1 = require('./ip.address');
+var core_1 = require("@angular/core");
+var sync_service_1 = require("./sync.service");
+var ip_address_1 = require("./ip.address");
 var MessageService = (function () {
     function MessageService(sync) {
         this.sync = sync;
@@ -20,6 +20,7 @@ var MessageService = (function () {
     }
     MessageService.prototype.getMessage = function () {
         return this.sync.getRequest(this.ChatUrl).then(function (res) {
+            console.log(res);
             console.log(res.json());
             return res.json();
         });
@@ -40,11 +41,11 @@ var MessageService = (function () {
         })
             .catch(this.handleError);
     };
-    MessageService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [sync_service_1.SyncService])
-    ], MessageService);
     return MessageService;
 }());
+MessageService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [sync_service_1.SyncService])
+], MessageService);
 exports.MessageService = MessageService;
 //# sourceMappingURL=message.service.js.map

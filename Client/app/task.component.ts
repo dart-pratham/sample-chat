@@ -36,6 +36,7 @@ export class TaskComponent implements OnInit{
   }
 
   ngOnInit(): void{
+    this.getTask();
     this.ws = new WebSocket("ws://" + IP + "/ws/notifychannel?subscribe-broadcast");
     this.ws.onmessage = (event) => {
       this.getTask();

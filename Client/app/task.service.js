@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var sync_service_1 = require('./sync.service');
-var ip_address_1 = require('./ip.address');
+var core_1 = require("@angular/core");
+var sync_service_1 = require("./sync.service");
+var ip_address_1 = require("./ip.address");
 var TaskService = (function () {
     function TaskService(sync) {
         this.sync = sync;
@@ -31,11 +31,11 @@ var TaskService = (function () {
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
-    TaskService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [sync_service_1.SyncService])
-    ], TaskService);
     return TaskService;
 }());
+TaskService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [sync_service_1.SyncService])
+], TaskService);
 exports.TaskService = TaskService;
 //# sourceMappingURL=task.service.js.map
