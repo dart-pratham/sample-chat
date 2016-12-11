@@ -3,6 +3,6 @@ from django.contrib import admin
 
 urlpatterns = [
     # Examples:
-    #url(r'', include('task.urls') ),
+    url(r'', include('task.urls') ),
     url(r'^admin/', include(admin.site.urls)),
 ]
