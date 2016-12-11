@@ -20,6 +20,7 @@ var MessageService = (function () {
     }
     MessageService.prototype.getMessage = function () {
         return this.sync.getRequest(this.ChatUrl).then(function (res) {
+            console.log(res);
             console.log(res.json());
             return res.json();
         });

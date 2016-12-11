@@ -20,7 +20,7 @@ export class TaskService {
     return Promise.reject(error.message || error);
   }
 
-  private TaskPostUrl = 'http://'+IP+'/get-notif/';
+  private TaskPostUrl = 'http://'+IP+'/confirm-notif/';
 
   check(id: number): Promise<number>{
     return this.sync.postRequest(this.TaskPostUrl, {id:id} )

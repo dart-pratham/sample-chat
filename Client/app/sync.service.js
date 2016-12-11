@@ -20,10 +20,15 @@ var SyncService = (function () {
     SyncService.prototype.getRequest = function (req) {
         var token = localStorage.getItem("token");
         var header = new http_1.Headers({ 'Authorization': 'token ' + token });
-        return this.http.get(req, { headers: header }).toPromise().then(function (response) {
-            if (response.status === 401) {
-                this.router.navigate(['/login']);
+        var x = this;
+        return this.http.get(req, { headers: header }).toPromise().catch(function (resp) {
+            console.log(resp, 1);
+            if (resp.status === 401) {
+                console.log('401 error');
+                localStorage.removeItem('token');
+                x.router.navigate(['/login']);
             }
+            return resp;
         });
     };
     SyncService.prototype.postRequest = function (req, data) {
@@ -31,10 +36,14 @@ var SyncService = (function () {
         var header = new http_1.Headers();
         header.append("Content-Type", "application/json");
         header.append("Authorization", "token " + token);
-        return this.http.post(req, JSON.stringify(data), { headers: header }).toPromise().then(function (response) {
-            if (response.status === 401) {
-                this.router.navigate(['/login']);
+        var x = this;
+        return this.http.post(req, JSON.stringify(data), { headers: header }).toPromise().catch(function (resp) {
+            if (resp.status === 401) {
+                console.log('401 error');
+                localStorage.removeItem('token');
+                x.router.navigate(['/login']);
             }
+            return resp;
         });
     };
     return SyncService;

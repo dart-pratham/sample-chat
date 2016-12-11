@@ -8,23 +8,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var user_1 = require('./user');
+var core_1 = require("@angular/core");
+var user_1 = require("./user");
 var UserComponent = (function () {
     function UserComponent() {
     }
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', user_1.User)
-    ], UserComponent.prototype, "user", void 0);
-    UserComponent = __decorate([
-        core_1.Component({
-            selector: 'ur',
-            template: "\n    <li *ngIf= \"user\">{{user.username}}></li>\n  "
-        }), 
-        __metadata('design:paramtypes', [])
-    ], UserComponent);
     return UserComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", user_1.User)
+], UserComponent.prototype, "user", void 0);
+UserComponent = __decorate([
+    core_1.Component({
+        selector: 'ur',
+        template: "\n    <li *ngIf= \"user\">{{user.username}}></li>\n  "
+    }),
+    __metadata("design:paramtypes", [])
+], UserComponent);
 exports.UserComponent = UserComponent;
 //# sourceMappingURL=user.component.js.map
