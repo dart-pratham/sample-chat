@@ -14,12 +14,14 @@ var login_component_1 = require('./login.component');
 var Filterroom_component_1 = require('./Filterroom.component');
 var all_message_room_component_1 = require('./all-message-room.component');
 var task_component_1 = require('./task.component');
+var auth_guard_service_1 = require('./auth-guard.service');
+var login_guard_service_1 = require('./login-guard.service');
 var routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
-    { path: 'chat', component: all_message_room_component_1.AllMessageRoom },
-    { path: 'task', component: task_component_1.TaskComponent },
-    { path: 'login', component: login_component_1.LoginComponent },
-    { path: 'filter', component: Filterroom_component_1.FilterRoomComponent }
+    { path: 'chat', canActivate: [auth_guard_service_1.AuthGuard], component: all_message_room_component_1.AllMessageRoom },
+    { path: 'task', canActivate: [auth_guard_service_1.AuthGuard], component: task_component_1.TaskComponent },
+    { path: 'login', canActivate: [login_guard_service_1.LoginGuard], component: login_component_1.LoginComponent },
+    { path: 'filter', canActivate: [auth_guard_service_1.AuthGuard], component: Filterroom_component_1.FilterRoomComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

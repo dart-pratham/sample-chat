@@ -30,6 +30,8 @@ var login_service_1 = require('./login.service');
 var sync_service_1 = require('./sync.service');
 var task_service_1 = require('./task.service');
 var user_list_service_1 = require('./user-list.service');
+var auth_guard_service_1 = require('./auth-guard.service');
+var login_guard_service_1 = require('./login-guard.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -37,7 +39,7 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, app_routing_1.AppRoutingModule, http_1.HttpModule],
             declarations: [app_component_1.AppComponent, all_message_room_component_1.AllMessageRoom, chatroom_component_1.AllMessageListComponent, login_component_1.LoginComponent, Filterroom_component_1.FilterRoomComponent, messagecomponent_1.MessageComponent, messagelist_component_1.MessageListComponent, task_component_1.TaskComponent, post_component_1.PostComponent, user_component_1.UserComponent, user_list_component_1.UserListComponent, chatroom_component_2.UserMessageListComponent],
-            providers: [message_service_1.MessageService, login_service_1.LoginService, sync_service_1.SyncService, task_service_1.TaskService, user_list_service_1.UserListService],
+            providers: [auth_guard_service_1.AuthGuard, login_guard_service_1.LoginGuard, message_service_1.MessageService, login_service_1.LoginService, sync_service_1.SyncService, task_service_1.TaskService, user_list_service_1.UserListService],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

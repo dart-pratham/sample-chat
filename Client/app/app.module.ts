@@ -23,11 +23,13 @@ import { LoginService } from './login.service';
 import { SyncService } from './sync.service';
 import { TaskService } from './task.service';
 import { UserListService } from './user-list.service';
+import { AuthGuard } from './auth-guard.service'
+import { LoginGuard } from './login-guard.service'
 
 @NgModule({
   imports:      [ BrowserModule,FormsModule,AppRoutingModule,HttpModule ],
   declarations: [ AppComponent, AllMessageRoom,AllMessageListComponent,LoginComponent, FilterRoomComponent, MessageComponent, MessageListComponent, TaskComponent, PostComponent,UserComponent, UserListComponent,UserMessageListComponent],
-  providers:    [ MessageService,LoginService,SyncService,TaskService,UserListService ],
+  providers:    [ AuthGuard,  LoginGuard, MessageService,LoginService,SyncService,TaskService,UserListService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule {}

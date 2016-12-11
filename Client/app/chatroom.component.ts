@@ -22,6 +22,7 @@ class ChatroomComponent implements OnInit, OnChanges, OnDestroy{
 
   ngOnInit(): void {
 
+    this.getMessage();
     console.log(this);
     this.ws = new WebSocket("ws://"+ IP + "/ws/chatchannel?subscribe-broadcast");
     this.ws.onmessage = (event) => {
